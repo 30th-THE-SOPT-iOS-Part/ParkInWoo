@@ -141,6 +141,9 @@ class LoginViewController: UIViewController {
         self.noAccountLabel.textColor = .systemGray
         self.signUpLabel.text = "가입하기"
         self.signUpLabel.textColor = .systemBlue
+        self.signUpLabel.isUserInteractionEnabled = true
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(signUpDidTouch))
+        self.signUpLabel.addGestureRecognizer(tapGestureRecognizer)
         
         self.labelOuterStackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -148,6 +151,11 @@ class LoginViewController: UIViewController {
             self.labelOuterStackView.centerXAnchor.constraint(equalTo: self.defaultScrollView.centerXAnchor),
             self.labelOuterStackView.bottomAnchor.constraint(equalTo: self.defaultScrollView.bottomAnchor)
         ])
+    }
+    
+    @objc private func signUpDidTouch() {
+        let signUpViewController = SignUpViewController()
+        self.navigationController?.pushViewController(signUpViewController, animated: true)
     }
     
 }
