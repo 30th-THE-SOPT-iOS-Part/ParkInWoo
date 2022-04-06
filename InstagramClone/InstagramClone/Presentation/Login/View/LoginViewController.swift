@@ -120,6 +120,7 @@ class LoginViewController: UIViewController {
         config.title = "로그인"
         self.loginButton.configuration = config
         self.loginButton.layer.opacity = 0.5
+        self.loginButton.addTarget(self, action: #selector(loginDidTouch), for: .touchUpInside)
         
         self.loginButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -150,6 +151,12 @@ class LoginViewController: UIViewController {
             self.labelOuterStackView.centerXAnchor.constraint(equalTo: self.defaultScrollView.centerXAnchor),
             self.labelOuterStackView.bottomAnchor.constraint(equalTo: self.defaultScrollView.bottomAnchor)
         ])
+    }
+    
+    @objc private func loginDidTouch() {
+        let welcomeViewController = WelcomeViewController()
+        welcomeViewController.modalPresentationStyle = .fullScreen
+        self.present(welcomeViewController, animated: true, completion: nil)
     }
     
     @objc private func signUpDidTouch() {

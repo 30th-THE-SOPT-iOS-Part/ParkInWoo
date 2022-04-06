@@ -128,6 +128,7 @@ class SignUpSecondViewController: UIViewController {
         let welcomeViewController = WelcomeViewController()
         welcomeViewController.modalPresentationStyle = .fullScreen
         self.present(welcomeViewController, animated: true, completion: nil)
+        self.navigationController?.popToRootViewController(animated: false)
     }
     
 }
