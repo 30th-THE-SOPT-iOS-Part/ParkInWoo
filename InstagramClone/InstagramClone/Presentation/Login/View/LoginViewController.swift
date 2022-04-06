@@ -118,7 +118,6 @@ class LoginViewController: UIViewController {
         self.defaultScrollView.addSubview(self.loginButton)
         var config = UIButton.Configuration.filled()
         config.title = "로그인"
-        config.baseBackgroundColor = .systemBlue
         self.loginButton.configuration = config
         self.loginButton.layer.opacity = 0.5
         
@@ -154,7 +153,7 @@ class LoginViewController: UIViewController {
     }
     
     @objc private func signUpDidTouch() {
-        let signUpViewController = SignUpViewController()
+        let signUpViewController = SignUpFirstViewController()
         self.navigationController?.pushViewController(signUpViewController, animated: true)
     }
     
