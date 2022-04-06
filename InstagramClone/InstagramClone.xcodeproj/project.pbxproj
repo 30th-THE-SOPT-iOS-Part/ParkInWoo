@@ -14,6 +14,7 @@
 		8AC6468627FD56EC00377BB2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC6468527FD56EC00377BB2 /* LoginViewController.swift */; };
 		8AC6468827FD57EE00377BB2 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC6468727FD57EE00377BB2 /* SignUpViewController.swift */; };
 		8AC6468A27FD57FF00377BB2 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC6468927FD57FF00377BB2 /* WelcomeViewController.swift */; };
+		8AC6468D27FD65F900377BB2 /* PadedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC6468C27FD65F900377BB2 /* PadedTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		8AC6468527FD56EC00377BB2 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		8AC6468727FD57EE00377BB2 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		8AC6468927FD57FF00377BB2 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		8AC6468C27FD65F900377BB2 /* PadedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PadedTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +73,7 @@
 		8AC6467E27FD552300377BB2 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				8AC6468B27FD65D400377BB2 /* Common */,
 				8AC6468127FD560300377BB2 /* Welcome */,
 				8AC6468027FD555500377BB2 /* SignUp */,
 				8AC6467F27FD553900377BB2 /* Login */,
@@ -124,6 +127,14 @@
 				8AC6468527FD56EC00377BB2 /* LoginViewController.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		8AC6468B27FD65D400377BB2 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				8AC6468C27FD65F900377BB2 /* PadedTextField.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,6 +211,7 @@
 				8AC6468A27FD57FF00377BB2 /* WelcomeViewController.swift in Sources */,
 				8AC6466B27FD547A00377BB2 /* AppDelegate.swift in Sources */,
 				8AC6468827FD57EE00377BB2 /* SignUpViewController.swift in Sources */,
+				8AC6468D27FD65F900377BB2 /* PadedTextField.swift in Sources */,
 				8AC6466D27FD547A00377BB2 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
