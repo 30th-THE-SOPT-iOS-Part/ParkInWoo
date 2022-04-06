@@ -9,19 +9,23 @@
 /* Begin PBXBuildFile section */
 		8AC6466B27FD547A00377BB2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC6466A27FD547A00377BB2 /* AppDelegate.swift */; };
 		8AC6466D27FD547A00377BB2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC6466C27FD547A00377BB2 /* SceneDelegate.swift */; };
-		8AC6466F27FD547A00377BB2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC6466E27FD547A00377BB2 /* ViewController.swift */; };
 		8AC6467427FD547A00377BB2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8AC6467327FD547A00377BB2 /* Assets.xcassets */; };
 		8AC6467727FD547A00377BB2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AC6467527FD547A00377BB2 /* LaunchScreen.storyboard */; };
+		8AC6468627FD56EC00377BB2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC6468527FD56EC00377BB2 /* LoginViewController.swift */; };
+		8AC6468827FD57EE00377BB2 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC6468727FD57EE00377BB2 /* SignUpViewController.swift */; };
+		8AC6468A27FD57FF00377BB2 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC6468927FD57FF00377BB2 /* WelcomeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		8AC6466727FD547A00377BB2 /* InstagramClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstagramClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AC6466A27FD547A00377BB2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8AC6466C27FD547A00377BB2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		8AC6466E27FD547A00377BB2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		8AC6467327FD547A00377BB2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8AC6467627FD547A00377BB2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8AC6467827FD547A00377BB2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8AC6468527FD56EC00377BB2 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		8AC6468727FD57EE00377BB2 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		8AC6468927FD57FF00377BB2 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +58,72 @@
 		8AC6466927FD547A00377BB2 /* InstagramClone */ = {
 			isa = PBXGroup;
 			children = (
+				8AC6467E27FD552300377BB2 /* Presentation */,
 				8AC6466A27FD547A00377BB2 /* AppDelegate.swift */,
 				8AC6466C27FD547A00377BB2 /* SceneDelegate.swift */,
-				8AC6466E27FD547A00377BB2 /* ViewController.swift */,
 				8AC6467327FD547A00377BB2 /* Assets.xcassets */,
 				8AC6467527FD547A00377BB2 /* LaunchScreen.storyboard */,
 				8AC6467827FD547A00377BB2 /* Info.plist */,
 			);
 			path = InstagramClone;
+			sourceTree = "<group>";
+		};
+		8AC6467E27FD552300377BB2 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				8AC6468127FD560300377BB2 /* Welcome */,
+				8AC6468027FD555500377BB2 /* SignUp */,
+				8AC6467F27FD553900377BB2 /* Login */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		8AC6467F27FD553900377BB2 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				8AC6468427FD56A800377BB2 /* View */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		8AC6468027FD555500377BB2 /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				8AC6468327FD56A200377BB2 /* View */,
+			);
+			path = SignUp;
+			sourceTree = "<group>";
+		};
+		8AC6468127FD560300377BB2 /* Welcome */ = {
+			isa = PBXGroup;
+			children = (
+				8AC6468227FD567700377BB2 /* View */,
+			);
+			path = Welcome;
+			sourceTree = "<group>";
+		};
+		8AC6468227FD567700377BB2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8AC6468927FD57FF00377BB2 /* WelcomeViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8AC6468327FD56A200377BB2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8AC6468727FD57EE00377BB2 /* SignUpViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8AC6468427FD56A800377BB2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8AC6468527FD56EC00377BB2 /* LoginViewController.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -134,8 +196,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8AC6466F27FD547A00377BB2 /* ViewController.swift in Sources */,
+				8AC6468627FD56EC00377BB2 /* LoginViewController.swift in Sources */,
+				8AC6468A27FD57FF00377BB2 /* WelcomeViewController.swift in Sources */,
 				8AC6466B27FD547A00377BB2 /* AppDelegate.swift in Sources */,
+				8AC6468827FD57EE00377BB2 /* SignUpViewController.swift in Sources */,
 				8AC6466D27FD547A00377BB2 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -281,7 +345,6 @@
 				INFOPLIST_FILE = InstagramClone/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -308,7 +371,6 @@
 				INFOPLIST_FILE = InstagramClone/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
