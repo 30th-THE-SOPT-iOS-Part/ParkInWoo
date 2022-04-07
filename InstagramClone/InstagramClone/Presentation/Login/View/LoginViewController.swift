@@ -41,7 +41,7 @@ class LoginViewController: UIViewController {
         self.view.addSubview(self.defaultScrollView)
         self.defaultScrollView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            self.defaultScrollView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 100),
+            self.defaultScrollView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 50),
             self.defaultScrollView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor),
             self.defaultScrollView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor),
             self.defaultScrollView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor)
@@ -83,17 +83,18 @@ class LoginViewController: UIViewController {
         self.pwTextField.layer.borderColor = UIColor.systemGray3.cgColor
         self.pwTextField.layer.cornerRadius = 3
         self.pwTextField.backgroundColor = .systemGray6
+        self.pwTextField.isSecureTextEntry = true
         self.pwTextField.delegate = self
        
-        self.toggleShowHideButton.frame = CGRect(x:0, y:0, width:25, height:25)
         var config = UIButton.Configuration.plain()
-        config.image = UIImage(named: "password hidden eye icon")
+        config.image = UIImage(named: "password shown eye icon")
         config.contentInsets = NSDirectionalEdgeInsets.init(top: 10, leading: 10, bottom: 10, trailing: 5)
         self.toggleShowHideButton.configuration = config
         self.toggleShowHideButton.translatesAutoresizingMaskIntoConstraints = false
+        self.toggleShowHideButton.addTarget(self, action: #selector(showHideDidTouch), for: .touchUpInside)
         
         self.pwTextField.rightView = self.toggleShowHideButton
-        self.pwTextField.rightViewMode = .whileEditing
+        self.pwTextField.rightViewMode = .always
         
         self.pwTextField.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -154,6 +155,15 @@ class LoginViewController: UIViewController {
             self.labelOuterStackView.centerXAnchor.constraint(equalTo: self.defaultScrollView.centerXAnchor),
             self.labelOuterStackView.bottomAnchor.constraint(equalTo: self.defaultScrollView.bottomAnchor)
         ])
+    }
+    
+    @objc private func showHideDidTouch() {
+        self.pwTextField.isSecureTextEntry.toggle()
+        if self.pwTextField.isSecureTextEntry {
+            self.toggleShowHideButton.setImage(UIImage(named: "password shown eye icon"), for: .normal)
+        } else {
+            self.toggleShowHideButton.setImage(UIImage(named: "password hidden eye icon"), for: .normal)
+        }
     }
     
     @objc private func loginDidTouch() {

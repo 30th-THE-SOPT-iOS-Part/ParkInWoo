@@ -14,6 +14,7 @@ class SignUpSecondViewController: UIViewController {
     private lazy var titleLabel = UILabel()
     private lazy var guideLabel = UILabel()
     private lazy var inputTextField = PadedTextField()
+    private lazy var toggleShowHideButton = UIButton()
     private lazy var nextButton = UIButton()
 
     override func viewDidLoad() {
@@ -94,7 +95,18 @@ class SignUpSecondViewController: UIViewController {
         self.inputTextField.layer.cornerRadius = 3
         self.inputTextField.backgroundColor = .systemGray6
         self.inputTextField.clearButtonMode = .whileEditing
+        self.inputTextField.isSecureTextEntry = true
         self.inputTextField.delegate = self
+        
+        var config = UIButton.Configuration.plain()
+        config.image = UIImage(named: "password shown eye icon")
+        config.contentInsets = NSDirectionalEdgeInsets.init(top: 10, leading: 10, bottom: 10, trailing: 5)
+        self.toggleShowHideButton.configuration = config
+        self.toggleShowHideButton.translatesAutoresizingMaskIntoConstraints = false
+        self.toggleShowHideButton.addTarget(self, action: #selector(showHideDidTouch), for: .touchUpInside)
+        
+        self.inputTextField.rightView = self.toggleShowHideButton
+        self.inputTextField.rightViewMode = .always
         
         self.inputTextField.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -120,6 +132,15 @@ class SignUpSecondViewController: UIViewController {
             self.nextButton.trailingAnchor.constraint(equalTo: self.inputTextField.trailingAnchor),
             self.nextButton.bottomAnchor.constraint(equalTo: self.defaultScrollView.bottomAnchor)
         ])
+    }
+    
+    @objc private func showHideDidTouch() {
+        self.inputTextField.isSecureTextEntry.toggle()
+        if self.inputTextField.isSecureTextEntry {
+            self.toggleShowHideButton.setImage(UIImage(named: "password shown eye icon"), for: .normal)
+        } else {
+            self.toggleShowHideButton.setImage(UIImage(named: "password hidden eye icon"), for: .normal)
+        }
     }
     
     @objc private func backDidTouch() {
