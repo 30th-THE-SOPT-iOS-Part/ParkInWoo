@@ -66,6 +66,7 @@ class LoginViewController: UIViewController {
         self.idTextField.layer.cornerRadius = 3
         self.idTextField.backgroundColor = .systemGray6
         self.idTextField.clearButtonMode = .whileEditing
+        self.idTextField.delegate = self
         
         self.idTextField.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -82,6 +83,7 @@ class LoginViewController: UIViewController {
         self.pwTextField.layer.borderColor = UIColor.systemGray3.cgColor
         self.pwTextField.layer.cornerRadius = 3
         self.pwTextField.backgroundColor = .systemGray6
+        self.pwTextField.delegate = self
        
         self.toggleShowHideButton.frame = CGRect(x:0, y:0, width:25, height:25)
         var config = UIButton.Configuration.plain()
@@ -119,6 +121,7 @@ class LoginViewController: UIViewController {
         var config = UIButton.Configuration.filled()
         config.title = "로그인"
         self.loginButton.configuration = config
+        self.loginButton.isUserInteractionEnabled = false
         self.loginButton.layer.opacity = 0.5
         self.loginButton.addTarget(self, action: #selector(loginDidTouch), for: .touchUpInside)
         
@@ -166,4 +169,16 @@ class LoginViewController: UIViewController {
         self.navigationController?.pushViewController(signUpViewController, animated: true)
     }
     
+}
+
+extension LoginViewController: UITextFieldDelegate {
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        if idTextField.text?.isEmpty ?? true || pwTextField.text?.isEmpty ?? true {
+            self.loginButton.isUserInteractionEnabled = false
+            self.loginButton.layer.opacity = 0.5
+        } else {
+            self.loginButton.isUserInteractionEnabled = true
+            self.loginButton.layer.opacity = 1
+        }
+    }
 }

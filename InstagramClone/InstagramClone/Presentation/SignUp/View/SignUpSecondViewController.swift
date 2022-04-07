@@ -94,6 +94,7 @@ class SignUpSecondViewController: UIViewController {
         self.inputTextField.layer.cornerRadius = 3
         self.inputTextField.backgroundColor = .systemGray6
         self.inputTextField.clearButtonMode = .whileEditing
+        self.inputTextField.delegate = self
         
         self.inputTextField.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -108,6 +109,7 @@ class SignUpSecondViewController: UIViewController {
         var config = UIButton.Configuration.filled()
         config.title = "다음"
         self.nextButton.configuration = config
+        self.nextButton.isUserInteractionEnabled = false
         self.nextButton.layer.opacity = 0.5
         self.nextButton.addTarget(self, action: #selector(nextDidTouch), for: .touchUpInside)
         
@@ -134,3 +136,14 @@ class SignUpSecondViewController: UIViewController {
     
 }
 
+extension SignUpSecondViewController: UITextFieldDelegate {
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        if inputTextField.text?.isEmpty ?? true {
+            self.nextButton.isUserInteractionEnabled = false
+            self.nextButton.layer.opacity = 0.5
+        } else {
+            self.nextButton.isUserInteractionEnabled = true
+            self.nextButton.layer.opacity = 1
+        }
+    }
+}
