@@ -13,7 +13,7 @@ class SignUpSecondViewController: UIViewController {
     private lazy var backButton = UIButton()
     private lazy var titleLabel = UILabel()
     private lazy var guideLabel = UILabel()
-    private lazy var nameTextField = PadedTextField()
+    private lazy var inputTextField = PadedTextField()
     private lazy var nextButton = UIButton()
 
     override func viewDidLoad() {
@@ -87,19 +87,19 @@ class SignUpSecondViewController: UIViewController {
     }
     
     private func nameTextFieldConfigure() {
-        self.defaultScrollView.addSubview(self.nameTextField)
-        self.nameTextField.placeholder = "비밀번호"
-        self.nameTextField.layer.borderWidth = 1
-        self.nameTextField.layer.borderColor = UIColor.systemGray3.cgColor
-        self.nameTextField.layer.cornerRadius = 3
-        self.nameTextField.backgroundColor = .systemGray6
-        self.nameTextField.clearButtonMode = .whileEditing
+        self.defaultScrollView.addSubview(self.inputTextField)
+        self.inputTextField.placeholder = "비밀번호"
+        self.inputTextField.layer.borderWidth = 1
+        self.inputTextField.layer.borderColor = UIColor.systemGray3.cgColor
+        self.inputTextField.layer.cornerRadius = 3
+        self.inputTextField.backgroundColor = .systemGray6
+        self.inputTextField.clearButtonMode = .whileEditing
         
-        self.nameTextField.translatesAutoresizingMaskIntoConstraints = false
+        self.inputTextField.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            self.nameTextField.topAnchor.constraint(equalTo: self.guideLabel.bottomAnchor, constant: 20),
-            self.nameTextField.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 30),
-            self.nameTextField.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -30)
+            self.inputTextField.topAnchor.constraint(equalTo: self.guideLabel.bottomAnchor, constant: 20),
+            self.inputTextField.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 30),
+            self.inputTextField.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -30)
         ])
     }
     
@@ -113,9 +113,9 @@ class SignUpSecondViewController: UIViewController {
         
         self.nextButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            self.nextButton.topAnchor.constraint(equalTo: self.nameTextField.bottomAnchor, constant: 20),
-            self.nextButton.leadingAnchor.constraint(equalTo: self.nameTextField.leadingAnchor),
-            self.nextButton.trailingAnchor.constraint(equalTo: self.nameTextField.trailingAnchor),
+            self.nextButton.topAnchor.constraint(equalTo: self.inputTextField.bottomAnchor, constant: 20),
+            self.nextButton.leadingAnchor.constraint(equalTo: self.inputTextField.leadingAnchor),
+            self.nextButton.trailingAnchor.constraint(equalTo: self.inputTextField.trailingAnchor),
             self.nextButton.bottomAnchor.constraint(equalTo: self.defaultScrollView.bottomAnchor)
         ])
     }
@@ -125,6 +125,7 @@ class SignUpSecondViewController: UIViewController {
     }
     
     @objc private func nextDidTouch() {
+        UserInfo.shared.pw = inputTextField.text
         let welcomeViewController = WelcomeViewController()
         welcomeViewController.modalPresentationStyle = .fullScreen
         self.present(welcomeViewController, animated: true, completion: nil)
