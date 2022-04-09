@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PadedTextField: UITextField {
+final class PadedTextField: UITextField {
     
     var insetX: CGFloat = 10
     var insetY: CGFloat = 10

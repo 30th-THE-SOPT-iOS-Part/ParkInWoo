@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct UserInfo {
+class UserInfo {
     static var shared: UserInfo = UserInfo()
     private init() {}
     

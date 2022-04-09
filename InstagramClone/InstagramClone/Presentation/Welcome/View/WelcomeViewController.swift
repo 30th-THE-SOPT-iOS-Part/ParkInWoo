@@ -7,7 +7,7 @@
 
 import UIKit
 
-class WelcomeViewController: UIViewController {
+final class WelcomeViewController: UIViewController {
     
     private lazy var outerStackView = UIStackView()
     private lazy var titleLabel = UILabel()

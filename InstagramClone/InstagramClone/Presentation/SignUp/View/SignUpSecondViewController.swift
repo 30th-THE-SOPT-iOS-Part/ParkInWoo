@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SignUpSecondViewController: UIViewController {
+final class SignUpSecondViewController: UIViewController {
     
     private lazy var defaultScrollView = UIScrollView()
     private lazy var backButton = UIButton()
