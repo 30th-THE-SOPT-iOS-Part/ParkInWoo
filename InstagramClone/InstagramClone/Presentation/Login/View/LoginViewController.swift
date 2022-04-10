@@ -167,8 +167,8 @@ final class LoginViewController: UIViewController {
     }
     
     @objc private func loginDidTouch() {
-        UserInfo.shared.id = idTextField.text
-        UserInfo.shared.pw = pwTextField.text
+        User.shared.id = idTextField.text
+        User.shared.pw = pwTextField.text
         let welcomeViewController = WelcomeViewController()
         welcomeViewController.modalPresentationStyle = .fullScreen
         self.present(welcomeViewController, animated: true, completion: nil)

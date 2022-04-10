@@ -18,7 +18,7 @@
 		8AC6468A27FD57FF00377BB2 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC6468927FD57FF00377BB2 /* WelcomeViewController.swift */; };
 		8AC6468D27FD65F900377BB2 /* PadedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC6468C27FD65F900377BB2 /* PadedTextField.swift */; };
 		8AC6468F27FDB96300377BB2 /* SignUpSecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC6468E27FDB96300377BB2 /* SignUpSecondViewController.swift */; };
-		8AC6469327FE9F5C00377BB2 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC6469227FE9F5C00377BB2 /* UserInfo.swift */; };
+		8AC6469327FE9F5C00377BB2 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC6469227FE9F5C00377BB2 /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,7 +37,7 @@
 		8AC6468927FD57FF00377BB2 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		8AC6468C27FD65F900377BB2 /* PadedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PadedTextField.swift; sourceTree = "<group>"; };
 		8AC6468E27FDB96300377BB2 /* SignUpSecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpSecondViewController.swift; sourceTree = "<group>"; };
-		8AC6469227FE9F5C00377BB2 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		8AC6469227FE9F5C00377BB2 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,7 +178,7 @@
 		8AC6469027FE9F4400377BB2 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				8AC6469227FE9F5C00377BB2 /* UserInfo.swift */,
+				8AC6469227FE9F5C00377BB2 /* User.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -261,7 +261,7 @@
 				8AC6468A27FD57FF00377BB2 /* WelcomeViewController.swift in Sources */,
 				8A8EA86228027202004DB3EF /* UIImage+Extension.swift in Sources */,
 				8AC6466B27FD547A00377BB2 /* AppDelegate.swift in Sources */,
-				8AC6469327FE9F5C00377BB2 /* UserInfo.swift in Sources */,
+				8AC6469327FE9F5C00377BB2 /* User.swift in Sources */,
 				8AC6468827FD57EE00377BB2 /* SignUpFirstViewController.swift in Sources */,
 				8AC6468D27FD65F900377BB2 /* PadedTextField.swift in Sources */,
 				8AC6466D27FD547A00377BB2 /* SceneDelegate.swift in Sources */,

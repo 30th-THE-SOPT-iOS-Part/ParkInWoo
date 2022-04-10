@@ -43,9 +43,9 @@ final class WelcomeViewController: UIViewController {
     
     private func titleLabelConfigure() {
         self.outerStackView.addArrangedSubview(self.titleLabel)
-        if let name = UserInfo.shared.id {
-            self.titleLabel.text = "\(name)\(NSLocalizedString("님", comment: "")) \(NSLocalizedString("Instagram에 오신 것을 환영합니다", comment: ""))"
-        } 
+        if let id = User.shared.id {
+            self.titleLabel.text = "\(id)\(NSLocalizedString("님", comment: "")) \(NSLocalizedString("Instagram에 오신 것을 환영합니다", comment: ""))"
+        }
         self.titleLabel.font = .systemFont(ofSize: 20)
         self.titleLabel.numberOfLines = 3
         self.titleLabel.textAlignment = .center

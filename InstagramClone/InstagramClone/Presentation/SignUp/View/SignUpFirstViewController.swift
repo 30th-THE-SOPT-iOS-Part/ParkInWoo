@@ -127,7 +127,7 @@ final class SignUpFirstViewController: UIViewController {
     }
     
     @objc private func nextDidTouch() {
-        UserInfo.shared.id = inputTextField.text
+        User.shared.id = inputTextField.text
         let signUpSecondViewController = SignUpSecondViewController()
         self.navigationController?.pushViewController(signUpSecondViewController, animated: true)
     }

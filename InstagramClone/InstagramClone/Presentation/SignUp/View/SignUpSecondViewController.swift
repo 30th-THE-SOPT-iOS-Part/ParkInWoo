@@ -148,7 +148,7 @@ final class SignUpSecondViewController: UIViewController {
     }
     
     @objc private func nextDidTouch() {
-        UserInfo.shared.pw = inputTextField.text
+        User.shared.pw = inputTextField.text
         let welcomeViewController = WelcomeViewController()
         welcomeViewController.modalPresentationStyle = .fullScreen
         self.present(welcomeViewController, animated: true) {

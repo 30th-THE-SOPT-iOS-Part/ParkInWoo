@@ -7,8 +7,8 @@
 
 import Foundation
 
-class UserInfo {
-    static var shared: UserInfo = UserInfo()
+class User {
+    static var shared: User = User()
     private init() {}
     
     var id: String?
