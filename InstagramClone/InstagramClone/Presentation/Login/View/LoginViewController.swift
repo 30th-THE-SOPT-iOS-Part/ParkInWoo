@@ -183,12 +183,8 @@ final class LoginViewController: UIViewController {
 
 extension LoginViewController: UITextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {
-        if idTextField.text?.isEmpty ?? true || pwTextField.text?.isEmpty ?? true {
-            self.loginButton.isUserInteractionEnabled = false
-            self.loginButton.layer.opacity = 0.5
-        } else {
-            self.loginButton.isUserInteractionEnabled = true
-            self.loginButton.layer.opacity = 1
-        }
+        let inputIsEmpty = idTextField.text?.isEmpty ?? true || pwTextField.text?.isEmpty ?? true
+        self.loginButton.isUserInteractionEnabled = !inputIsEmpty
+        self.loginButton.layer.opacity = inputIsEmpty ? 0.5 : 1
     }
 }

@@ -159,12 +159,8 @@ final class SignUpSecondViewController: UIViewController {
 
 extension SignUpSecondViewController: UITextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {
-        if inputTextField.text?.isEmpty ?? true {
-            self.nextButton.isUserInteractionEnabled = false
-            self.nextButton.layer.opacity = 0.5
-        } else {
-            self.nextButton.isUserInteractionEnabled = true
-            self.nextButton.layer.opacity = 1
-        }
+        let inputIsEmpty = inputTextField.text?.isEmpty ?? true
+        self.nextButton.isUserInteractionEnabled = !inputIsEmpty
+        self.nextButton.layer.opacity = inputIsEmpty ? 0.5 : 1
     }
 }
