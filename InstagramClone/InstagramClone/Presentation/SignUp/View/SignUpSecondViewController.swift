@@ -61,7 +61,7 @@ final class SignUpSecondViewController: UIViewController {
     
     private func titleLabelConfigure() {
         self.defaultScrollView.addSubview(self.titleLabel)
-        self.titleLabel.text = "비밀번호 만들기"
+        self.titleLabel.text = NSLocalizedString("비밀번호 만들기", comment: "")
         self.titleLabel.font = .systemFont(ofSize: 23)
         
         self.titleLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -73,7 +73,7 @@ final class SignUpSecondViewController: UIViewController {
     
     private func guideLabelConfigure() {
         self.defaultScrollView.addSubview(self.guideLabel)
-        self.guideLabel.text = "비밀번호를 저장할 수 있으므로 iColud® 기기에서 로그인 정보를 입력하지 않아도 됩니다."
+        self.guideLabel.text = NSLocalizedString("비밀번호를 저장할 수 있으므로 iColud® 기기에서 로그인 정보를 입력하지 않아도 됩니다", comment: "")
         self.guideLabel.font = .systemFont(ofSize: 12)
         self.guideLabel.numberOfLines = 2
         self.guideLabel.textAlignment = .center
@@ -89,7 +89,7 @@ final class SignUpSecondViewController: UIViewController {
     
     private func nameTextFieldConfigure() {
         self.defaultScrollView.addSubview(self.inputTextField)
-        self.inputTextField.placeholder = "비밀번호"
+        self.inputTextField.placeholder = NSLocalizedString("비밀번호", comment: "")
         self.inputTextField.layer.borderWidth = 1
         self.inputTextField.layer.borderColor = UIColor.systemGray3.cgColor
         self.inputTextField.layer.cornerRadius = 3
@@ -119,7 +119,7 @@ final class SignUpSecondViewController: UIViewController {
     private func nextButtonConfigure() {
         self.defaultScrollView.addSubview(self.nextButton)
         var config = UIButton.Configuration.filled()
-        config.title = "다음"
+        config.title = NSLocalizedString("다음", comment: "")
         self.nextButton.configuration = config
         self.nextButton.isUserInteractionEnabled = false
         self.nextButton.layer.opacity = 0.5

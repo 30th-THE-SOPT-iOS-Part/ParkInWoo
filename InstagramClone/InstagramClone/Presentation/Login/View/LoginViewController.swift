@@ -60,7 +60,7 @@ final class LoginViewController: UIViewController {
     
     private func idTextFieldConfigure() {
         self.defaultScrollView.addSubview(self.idTextField)
-        self.idTextField.placeholder = "전화번호, 사용자 이름 또는 이메일"
+        self.idTextField.placeholder = NSLocalizedString("전화번호, 사용자 이름 또는 이메일", comment: "")
         self.idTextField.layer.borderWidth = 1
         self.idTextField.layer.borderColor = UIColor.systemGray3.cgColor
         self.idTextField.layer.cornerRadius = 3
@@ -78,7 +78,7 @@ final class LoginViewController: UIViewController {
     
     private func pwTextFieldConfigure() {
         self.defaultScrollView.addSubview(self.pwTextField)
-        self.pwTextField.placeholder = "비밀번호"
+        self.pwTextField.placeholder = NSLocalizedString("비밀번호", comment: "")
         self.pwTextField.layer.borderWidth = 1
         self.pwTextField.layer.borderColor = UIColor.systemGray3.cgColor
         self.pwTextField.layer.cornerRadius = 3
@@ -107,7 +107,7 @@ final class LoginViewController: UIViewController {
     private func pwForgotLabelCongifugure() {
         self.defaultScrollView.addSubview(self.pwForgotLabel)
         self.pwForgotLabel.textColor = .systemBlue
-        self.pwForgotLabel.text = "비밀번호를 잊으셨나요?"
+        self.pwForgotLabel.text = NSLocalizedString("비밀번호를 잊으셨나요?", comment: "")
         self.pwForgotLabel.font = .systemFont(ofSize: 13)
         
         self.pwForgotLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -120,7 +120,7 @@ final class LoginViewController: UIViewController {
     private func loginButtonCongifugure() {
         self.defaultScrollView.addSubview(self.loginButton)
         var config = UIButton.Configuration.filled()
-        config.title = "로그인"
+        config.title = NSLocalizedString("로그인", comment: "")
         self.loginButton.configuration = config
         self.loginButton.isUserInteractionEnabled = false
         self.loginButton.layer.opacity = 0.5
@@ -141,9 +141,9 @@ final class LoginViewController: UIViewController {
         self.labelOuterStackView.addArrangedSubview(self.signUpLabel)
         self.labelOuterStackView.spacing = 3
         
-        self.noAccountLabel.text = "계정이 없으신가요?"
+        self.noAccountLabel.text = NSLocalizedString("계정이 없으신가요?", comment: "")
         self.noAccountLabel.textColor = .systemGray
-        self.signUpLabel.text = "가입하기"
+        self.signUpLabel.text = NSLocalizedString("가입하기", comment: "")
         self.signUpLabel.textColor = .systemBlue
         self.signUpLabel.isUserInteractionEnabled = true
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(signUpDidTouch))
