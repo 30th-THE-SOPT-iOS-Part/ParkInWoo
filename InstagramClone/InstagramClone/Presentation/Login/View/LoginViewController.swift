@@ -50,7 +50,7 @@ final class LoginViewController: UIViewController {
     
     private func logoImageViewConfigure() {
         self.defaultScrollView.addSubview(self.logoImageView)
-        self.logoImageView.image = UIImage(named: "Instagram Black Logo")
+        self.logoImageView.image = .logo
         self.logoImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             self.logoImageView.topAnchor.constraint(equalTo: self.defaultScrollView.topAnchor),
@@ -87,7 +87,7 @@ final class LoginViewController: UIViewController {
         self.pwTextField.delegate = self
        
         var config = UIButton.Configuration.plain()
-        config.image = UIImage(named: "password shown eye icon")
+        config.image = .shownEye
         config.contentInsets = NSDirectionalEdgeInsets.init(top: 10, leading: 10, bottom: 10, trailing: 5)
         self.toggleShowHideButton.configuration = config
         self.toggleShowHideButton.translatesAutoresizingMaskIntoConstraints = false
@@ -160,9 +160,9 @@ final class LoginViewController: UIViewController {
     @objc private func showHideDidTouch() {
         self.pwTextField.isSecureTextEntry.toggle()
         if self.pwTextField.isSecureTextEntry {
-            self.toggleShowHideButton.setImage(UIImage(named: "password shown eye icon"), for: .normal)
+            self.toggleShowHideButton.setImage(.shownEye, for: .normal)
         } else {
-            self.toggleShowHideButton.setImage(UIImage(named: "password hidden eye icon"), for: .normal)
+            self.toggleShowHideButton.setImage(.hiddenEye, for: .normal)
         }
     }
     

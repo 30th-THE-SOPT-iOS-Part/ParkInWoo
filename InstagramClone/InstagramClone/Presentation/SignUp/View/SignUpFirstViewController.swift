@@ -47,7 +47,7 @@ final class SignUpFirstViewController: UIViewController {
     private func backButtonConfigure() {
         self.defaultScrollView.addSubview(self.backButton)
         var config = UIButton.Configuration.plain()
-        config.image = UIImage(named: "icn_back_24")
+        config.image = .back
         self.backButton.configuration = config
         self.backButton.addTarget(self, action: #selector(backDidTouch), for: .touchUpInside)
         

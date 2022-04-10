@@ -48,7 +48,7 @@ final class SignUpSecondViewController: UIViewController {
     private func backButtonConfigure() {
         self.defaultScrollView.addSubview(self.backButton)
         var config = UIButton.Configuration.plain()
-        config.image = UIImage(named: "icn_back_24")
+        config.image = .back
         self.backButton.configuration = config
         self.backButton.addTarget(self, action: #selector(backDidTouch), for: .touchUpInside)
         
@@ -99,7 +99,7 @@ final class SignUpSecondViewController: UIViewController {
         self.inputTextField.delegate = self
         
         var config = UIButton.Configuration.plain()
-        config.image = UIImage(named: "password shown eye icon")
+        config.image = .shownEye
         config.contentInsets = NSDirectionalEdgeInsets.init(top: 10, leading: 10, bottom: 10, trailing: 5)
         self.toggleShowHideButton.configuration = config
         self.toggleShowHideButton.translatesAutoresizingMaskIntoConstraints = false
@@ -137,9 +137,9 @@ final class SignUpSecondViewController: UIViewController {
     @objc private func showHideDidTouch() {
         self.inputTextField.isSecureTextEntry.toggle()
         if self.inputTextField.isSecureTextEntry {
-            self.toggleShowHideButton.setImage(UIImage(named: "password shown eye icon"), for: .normal)
+            self.toggleShowHideButton.setImage(.shownEye, for: .normal)
         } else {
-            self.toggleShowHideButton.setImage(UIImage(named: "password hidden eye icon"), for: .normal)
+            self.toggleShowHideButton.setImage(.hiddenEye, for: .normal)
         }
     }
     

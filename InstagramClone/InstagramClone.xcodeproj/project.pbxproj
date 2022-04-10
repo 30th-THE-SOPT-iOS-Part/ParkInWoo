@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8A8EA86228027202004DB3EF /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8EA86128027202004DB3EF /* UIImage+Extension.swift */; };
 		8AC6466B27FD547A00377BB2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC6466A27FD547A00377BB2 /* AppDelegate.swift */; };
 		8AC6466D27FD547A00377BB2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC6466C27FD547A00377BB2 /* SceneDelegate.swift */; };
 		8AC6467427FD547A00377BB2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8AC6467327FD547A00377BB2 /* Assets.xcassets */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8A8EA86128027202004DB3EF /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		8AC6466727FD547A00377BB2 /* InstagramClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstagramClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AC6466A27FD547A00377BB2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8AC6466C27FD547A00377BB2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -45,6 +47,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8A8EA860280271EF004DB3EF /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				8A8EA86128027202004DB3EF /* UIImage+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		8A8EA8632802720B004DB3EF /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				8AC6468C27FD65F900377BB2 /* PadedTextField.swift */,
+			);
+			path = CustomView;
+			sourceTree = "<group>";
+		};
 		8AC6465E27FD547A00377BB2 = {
 			isa = PBXGroup;
 			children = (
@@ -138,7 +156,8 @@
 		8AC6468B27FD65D400377BB2 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				8AC6468C27FD65F900377BB2 /* PadedTextField.swift */,
+				8A8EA8632802720B004DB3EF /* CustomView */,
+				8A8EA860280271EF004DB3EF /* Extension */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -224,6 +243,7 @@
 				8AC6468F27FDB96300377BB2 /* SignUpSecondViewController.swift in Sources */,
 				8AC6468627FD56EC00377BB2 /* LoginViewController.swift in Sources */,
 				8AC6468A27FD57FF00377BB2 /* WelcomeViewController.swift in Sources */,
+				8A8EA86228027202004DB3EF /* UIImage+Extension.swift in Sources */,
 				8AC6466B27FD547A00377BB2 /* AppDelegate.swift in Sources */,
 				8AC6469327FE9F5C00377BB2 /* UserInfo.swift in Sources */,
 				8AC6468827FD57EE00377BB2 /* SignUpFirstViewController.swift in Sources */,
