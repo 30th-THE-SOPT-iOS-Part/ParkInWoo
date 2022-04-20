@@ -37,7 +37,7 @@ final class SignUpFirstViewController: UIViewController {
         self.view.addSubview(self.defaultScrollView)
         self.defaultScrollView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            self.defaultScrollView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 10),
+            self.defaultScrollView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
             self.defaultScrollView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor),
             self.defaultScrollView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor),
             self.defaultScrollView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor)
@@ -53,7 +53,7 @@ final class SignUpFirstViewController: UIViewController {
         
         self.backButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            self.backButton.topAnchor.constraint(equalTo: self.defaultScrollView.topAnchor),
+            self.backButton.topAnchor.constraint(equalTo: self.defaultScrollView.topAnchor, constant: 14),
             self.backButton.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 10)
         ])
     }
@@ -61,11 +61,11 @@ final class SignUpFirstViewController: UIViewController {
     private func titleLabelConfigure() {
         self.defaultScrollView.addSubview(self.titleLabel)
         self.titleLabel.text = "사용자 이름 만들기".localized()
-        self.titleLabel.font = .systemFont(ofSize: 23)
+        self.titleLabel.font = .systemFont(ofSize: 24)
         
         self.titleLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            self.titleLabel.topAnchor.constraint(equalTo: self.backButton.bottomAnchor, constant: 80),
+            self.titleLabel.topAnchor.constraint(equalTo: self.backButton.bottomAnchor, constant: 10),
             self.titleLabel.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerXAnchor)
         ])
     }
@@ -80,7 +80,7 @@ final class SignUpFirstViewController: UIViewController {
         
         self.guideLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            self.guideLabel.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: 20),
+            self.guideLabel.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: 19),
             self.guideLabel.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 80),
             self.guideLabel.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -80)
         ])
@@ -98,9 +98,10 @@ final class SignUpFirstViewController: UIViewController {
         
         self.inputTextField.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            self.inputTextField.topAnchor.constraint(equalTo: self.guideLabel.bottomAnchor, constant: 20),
-            self.inputTextField.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 30),
-            self.inputTextField.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -30)
+            self.inputTextField.topAnchor.constraint(equalTo: self.guideLabel.bottomAnchor, constant: 19),
+            self.inputTextField.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            self.inputTextField.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            self.inputTextField.heightAnchor.constraint(equalToConstant: 44)
         ])
     }
     
@@ -115,10 +116,11 @@ final class SignUpFirstViewController: UIViewController {
         
         self.nextButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            self.nextButton.topAnchor.constraint(equalTo: self.inputTextField.bottomAnchor, constant: 20),
+            self.nextButton.topAnchor.constraint(equalTo: self.inputTextField.bottomAnchor, constant: 22),
             self.nextButton.leadingAnchor.constraint(equalTo: self.inputTextField.leadingAnchor),
             self.nextButton.trailingAnchor.constraint(equalTo: self.inputTextField.trailingAnchor),
-            self.nextButton.bottomAnchor.constraint(equalTo: self.defaultScrollView.bottomAnchor)
+            self.nextButton.bottomAnchor.constraint(equalTo: self.defaultScrollView.bottomAnchor),
+            self.nextButton.heightAnchor.constraint(equalToConstant: 44)
         ])
     }
     
