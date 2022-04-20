@@ -60,7 +60,7 @@ final class SignUpFirstViewController: UIViewController {
     
     private func titleLabelConfigure() {
         self.defaultScrollView.addSubview(self.titleLabel)
-        self.titleLabel.text = NSLocalizedString("사용자 이름 만들기", comment: "")
+        self.titleLabel.text = "사용자 이름 만들기".localized()
         self.titleLabel.font = .systemFont(ofSize: 23)
         
         self.titleLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -72,7 +72,7 @@ final class SignUpFirstViewController: UIViewController {
     
     private func guideLabelConfigure() {
         self.defaultScrollView.addSubview(self.guideLabel)
-        self.guideLabel.text = NSLocalizedString("새 계정에 사용할 사용자 이름을 선택하세요. 나중에 언제든지 변경할 수 있습니다", comment: "")
+        self.guideLabel.text = "새 계정에 사용할 사용자 이름을 선택하세요. 나중에 언제든지 변경할 수 있습니다".localized()
         self.guideLabel.font = .systemFont(ofSize: 12)
         self.guideLabel.numberOfLines = 2
         self.guideLabel.textAlignment = .center
@@ -88,7 +88,7 @@ final class SignUpFirstViewController: UIViewController {
     
     private func nameTextFieldConfigure() {
         self.defaultScrollView.addSubview(self.inputTextField)
-        self.inputTextField.placeholder = NSLocalizedString("사용자 이름", comment: "")
+        self.inputTextField.placeholder = "사용자 이름".localized()
         self.inputTextField.layer.borderWidth = 1
         self.inputTextField.layer.borderColor = UIColor.systemGray3.cgColor
         self.inputTextField.layer.cornerRadius = 3
@@ -107,7 +107,7 @@ final class SignUpFirstViewController: UIViewController {
     private func nextButtonConfigure() {
         self.defaultScrollView.addSubview(self.nextButton)
         var config = UIButton.Configuration.filled()
-        config.title = NSLocalizedString("다음", comment: "")
+        config.title = "다음".localized()
         self.nextButton.configuration = config
         self.nextButton.isUserInteractionEnabled = false
         self.nextButton.layer.opacity = 0.5
