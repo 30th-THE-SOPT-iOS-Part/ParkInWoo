@@ -138,6 +138,6 @@ extension SignUpFirstViewController: UITextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {
         let inputIsEmpty = inputTextField.text?.isEmpty ?? true
         self.nextButton.isUserInteractionEnabled = !inputIsEmpty
-        self.nextButton.layer.opacity = inputIsEmpty ? 0.5 : 1
+        self.nextButton.alpha = inputIsEmpty ? 0.5 : 1
     }
 }

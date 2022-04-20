@@ -185,6 +185,6 @@ extension LoginViewController: UITextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {
         let inputIsEmpty = idTextField.text?.isEmpty ?? true || pwTextField.text?.isEmpty ?? true
         self.loginButton.isUserInteractionEnabled = !inputIsEmpty
-        self.loginButton.layer.opacity = inputIsEmpty ? 0.5 : 1
+        self.loginButton.alpha = inputIsEmpty ? 0.5 : 1
     }
 }
