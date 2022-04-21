@@ -16,40 +16,35 @@ final class MainTabBarController: UITabBarController {
     }
     
     private func configureTabs() {
-        let home = UIViewController()
-        home.view.backgroundColor = .red
+        let home = HomeViewController()
         home.tabBarItem = UITabBarItem(
             title: .none,
             image: .home?.withRenderingMode(.alwaysOriginal),
             selectedImage: .homeSelected?.withRenderingMode(.alwaysOriginal)
         )
         
-        let search = UIViewController()
-        search.view.backgroundColor = .yellow
+        let search = SearchViewController()
         search.tabBarItem = UITabBarItem(
             title: .none,
             image: .search?.withRenderingMode(.alwaysOriginal),
             selectedImage: .searchSelected?.withRenderingMode(.alwaysOriginal)
         )
         
-        let reels = UIViewController()
-        reels.view.backgroundColor = .green
+        let reels = ReelsViewController()
         reels.tabBarItem = UITabBarItem(
             title: .none,
             image: .reels?.withRenderingMode(.alwaysOriginal),
             selectedImage: .reelsSelected?.withRenderingMode(.alwaysOriginal)
         )
         
-        let shop = UIViewController()
-        shop.view.backgroundColor = .blue
+        let shop = ShopViewController()
         shop.tabBarItem = UITabBarItem(
             title: .none,
             image: .shop?.withRenderingMode(.alwaysOriginal),
             selectedImage: .shopSelected?.withRenderingMode(.alwaysOriginal)
         )
         
-        let profile = UIViewController()
-        profile.view.backgroundColor = .purple
+        let profile = ProfileViewController()
         profile.tabBarItem = UITabBarItem(
             title: .none,
             image: .profile?.withRenderingMode(.alwaysOriginal),
