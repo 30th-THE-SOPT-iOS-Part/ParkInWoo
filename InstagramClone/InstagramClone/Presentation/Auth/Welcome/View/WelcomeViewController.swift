@@ -115,7 +115,10 @@ final class WelcomeViewController: UIViewController {
     @objc private func completeDidTouch() {
         let mainTabBarController = TabBarController()
         mainTabBarController.modalPresentationStyle = .fullScreen
-        self.present(mainTabBarController, animated: false)
+        if let scene = UIApplication.shared.connectedScenes.first,
+           let sd = scene.delegate as? SceneDelegate {
+            sd.window?.rootViewController = mainTabBarController
+        }
     }
     
     @objc private func loginDidTouch() {

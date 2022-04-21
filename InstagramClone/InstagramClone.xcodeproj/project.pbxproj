@@ -82,9 +82,9 @@
 		8A3BF89C28117C5200F3D110 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
-				8AC6468127FD560300377BB2 /* Welcome */,
-				8AC6468027FD555500377BB2 /* SignUp */,
 				8AC6467F27FD553900377BB2 /* Login */,
+				8AC6468027FD555500377BB2 /* SignUp */,
+				8AC6468127FD560300377BB2 /* Welcome */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
