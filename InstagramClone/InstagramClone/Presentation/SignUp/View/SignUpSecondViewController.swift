@@ -38,7 +38,7 @@ final class SignUpSecondViewController: UIViewController {
         self.view.addSubview(self.defaultScrollView)
         self.defaultScrollView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            self.defaultScrollView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 10),
+            self.defaultScrollView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
             self.defaultScrollView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor),
             self.defaultScrollView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor),
             self.defaultScrollView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor)
@@ -54,26 +54,26 @@ final class SignUpSecondViewController: UIViewController {
         
         self.backButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            self.backButton.topAnchor.constraint(equalTo: self.defaultScrollView.topAnchor),
+            self.backButton.topAnchor.constraint(equalTo: self.defaultScrollView.topAnchor, constant: 14),
             self.backButton.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 10)
         ])
     }
     
     private func titleLabelConfigure() {
         self.defaultScrollView.addSubview(self.titleLabel)
-        self.titleLabel.text = NSLocalizedString("비밀번호 만들기", comment: "")
+        self.titleLabel.text = "비밀번호 만들기".localized()
         self.titleLabel.font = .systemFont(ofSize: 23)
         
         self.titleLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            self.titleLabel.topAnchor.constraint(equalTo: self.backButton.bottomAnchor, constant: 80),
+            self.titleLabel.topAnchor.constraint(equalTo: self.backButton.bottomAnchor, constant: 10),
             self.titleLabel.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerXAnchor)
         ])
     }
     
     private func guideLabelConfigure() {
         self.defaultScrollView.addSubview(self.guideLabel)
-        self.guideLabel.text = NSLocalizedString("비밀번호를 저장할 수 있으므로 iColud® 기기에서 로그인 정보를 입력하지 않아도 됩니다", comment: "")
+        self.guideLabel.text = "비밀번호를 저장할 수 있으므로 iColud® 기기에서 로그인 정보를 입력하지 않아도 됩니다".localized()
         self.guideLabel.font = .systemFont(ofSize: 12)
         self.guideLabel.numberOfLines = 2
         self.guideLabel.textAlignment = .center
@@ -81,7 +81,7 @@ final class SignUpSecondViewController: UIViewController {
         
         self.guideLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            self.guideLabel.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: 20),
+            self.guideLabel.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: 19),
             self.guideLabel.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 80),
             self.guideLabel.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -80)
         ])
@@ -89,7 +89,7 @@ final class SignUpSecondViewController: UIViewController {
     
     private func nameTextFieldConfigure() {
         self.defaultScrollView.addSubview(self.inputTextField)
-        self.inputTextField.placeholder = NSLocalizedString("비밀번호", comment: "")
+        self.inputTextField.placeholder = "비밀번호".localized()
         self.inputTextField.layer.borderWidth = 1
         self.inputTextField.layer.borderColor = UIColor.systemGray3.cgColor
         self.inputTextField.layer.cornerRadius = 3
@@ -110,16 +110,17 @@ final class SignUpSecondViewController: UIViewController {
         
         self.inputTextField.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            self.inputTextField.topAnchor.constraint(equalTo: self.guideLabel.bottomAnchor, constant: 20),
-            self.inputTextField.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 30),
-            self.inputTextField.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -30)
+            self.inputTextField.topAnchor.constraint(equalTo: self.guideLabel.bottomAnchor, constant: 19),
+            self.inputTextField.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            self.inputTextField.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            self.inputTextField.heightAnchor.constraint(equalToConstant: 44)
         ])
     }
     
     private func nextButtonConfigure() {
         self.defaultScrollView.addSubview(self.nextButton)
         var config = UIButton.Configuration.filled()
-        config.title = NSLocalizedString("다음", comment: "")
+        config.title = "다음".localized()
         self.nextButton.configuration = config
         self.nextButton.isUserInteractionEnabled = false
         self.nextButton.layer.opacity = 0.5
@@ -127,10 +128,11 @@ final class SignUpSecondViewController: UIViewController {
         
         self.nextButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            self.nextButton.topAnchor.constraint(equalTo: self.inputTextField.bottomAnchor, constant: 20),
+            self.nextButton.topAnchor.constraint(equalTo: self.inputTextField.bottomAnchor, constant: 22),
             self.nextButton.leadingAnchor.constraint(equalTo: self.inputTextField.leadingAnchor),
             self.nextButton.trailingAnchor.constraint(equalTo: self.inputTextField.trailingAnchor),
-            self.nextButton.bottomAnchor.constraint(equalTo: self.defaultScrollView.bottomAnchor)
+            self.nextButton.bottomAnchor.constraint(equalTo: self.defaultScrollView.bottomAnchor),
+            self.nextButton.heightAnchor.constraint(equalToConstant: 44)
         ])
     }
     
@@ -160,8 +162,8 @@ final class SignUpSecondViewController: UIViewController {
 
 extension SignUpSecondViewController: UITextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {
-        let inputIsEmpty = inputTextField.text?.isEmpty ?? true
-        self.nextButton.isUserInteractionEnabled = !inputIsEmpty
-        self.nextButton.layer.opacity = inputIsEmpty ? 0.5 : 1
+        let inputCompleted = inputTextField.hasText
+        self.nextButton.isUserInteractionEnabled = inputCompleted
+        self.nextButton.alpha = inputCompleted ? 1 : 0.5
     }
 }

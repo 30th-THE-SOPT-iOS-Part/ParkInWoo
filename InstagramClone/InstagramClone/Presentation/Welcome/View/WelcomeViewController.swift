@@ -44,7 +44,7 @@ final class WelcomeViewController: UIViewController {
     private func titleLabelConfigure() {
         self.outerStackView.addArrangedSubview(self.titleLabel)
         if let id = User.shared.id {
-            self.titleLabel.text = "\(id)\(NSLocalizedString("님", comment: "")) \(NSLocalizedString("Instagram에 오신 것을 환영합니다", comment: ""))"
+            self.titleLabel.text = "\(id)\("님".localized()) \("Instagram에 오신 것을 환영합니다".localized())"
         }
         self.titleLabel.font = .systemFont(ofSize: 20)
         self.titleLabel.numberOfLines = 3
@@ -59,7 +59,7 @@ final class WelcomeViewController: UIViewController {
     
     private func guideLabelConfigure() {
         self.outerStackView.addArrangedSubview(self.guideLabel)
-        self.guideLabel.text = NSLocalizedString("언제든지 연락처 정보와 사용자 이름을 변경할 수 있습니다", comment: "")
+        self.guideLabel.text = "언제든지 연락처 정보와 사용자 이름을 변경할 수 있습니다".localized()
         self.guideLabel.font = .systemFont(ofSize: 12)
         self.guideLabel.numberOfLines = 2
         self.guideLabel.textAlignment = .center
@@ -75,7 +75,7 @@ final class WelcomeViewController: UIViewController {
     private func completeButtonConfigure() {
         self.outerStackView.addArrangedSubview(self.completeButton)
         var config = UIButton.Configuration.filled()
-        config.title = NSLocalizedString("완료하기", comment: "")
+        config.title = "완료하기".localized()
         self.completeButton.configuration = config
         self.completeButton.addTarget(self, action: #selector(completeDidTouch), for: .touchUpInside)
         
