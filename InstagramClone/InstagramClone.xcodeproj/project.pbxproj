@@ -11,7 +11,7 @@
 		8A3BF890281157E800F3D110 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 8A3BF88F281157E800F3D110 /* RxCocoa */; };
 		8A3BF892281157E800F3D110 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 8A3BF891281157E800F3D110 /* RxRelay */; };
 		8A3BF894281157E800F3D110 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8A3BF893281157E800F3D110 /* RxSwift */; };
-		8A3BF89728115FA000F3D110 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3BF89628115FA000F3D110 /* MainTabBarController.swift */; };
+		8A3BF89728115FA000F3D110 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3BF89628115FA000F3D110 /* TabBarController.swift */; };
 		8A3BF8A328117D3B00F3D110 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3BF8A228117D3B00F3D110 /* HomeViewController.swift */; };
 		8A3BF8A528117D7500F3D110 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3BF8A428117D7500F3D110 /* SearchViewController.swift */; };
 		8A3BF8A728117D7D00F3D110 /* ReelsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3BF8A628117D7D00F3D110 /* ReelsViewController.swift */; };
@@ -33,7 +33,7 @@
 
 /* Begin PBXFileReference section */
 		8A3BF88C280FFA1500F3D110 /* String+Localizing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Localizing.swift"; sourceTree = "<group>"; };
-		8A3BF89628115FA000F3D110 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		8A3BF89628115FA000F3D110 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		8A3BF8A228117D3B00F3D110 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		8A3BF8A428117D7500F3D110 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		8A3BF8A628117D7D00F3D110 /* ReelsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReelsViewController.swift; sourceTree = "<group>"; };
@@ -71,12 +71,12 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		8A3BF89528115F4000F3D110 /* MainTabBar */ = {
+		8A3BF89528115F4000F3D110 /* TabBar */ = {
 			isa = PBXGroup;
 			children = (
-				8A3BF89628115FA000F3D110 /* MainTabBarController.swift */,
+				8A3BF89628115FA000F3D110 /* TabBarController.swift */,
 			);
-			path = MainTabBar;
+			path = TabBar;
 			sourceTree = "<group>";
 		};
 		8A3BF89C28117C5200F3D110 /* Auth */ = {
@@ -189,7 +189,7 @@
 			children = (
 				8AC6468B27FD65D400377BB2 /* Common */,
 				8A3BF89C28117C5200F3D110 /* Auth */,
-				8A3BF89528115F4000F3D110 /* MainTabBar */,
+				8A3BF89528115F4000F3D110 /* TabBar */,
 				8A3BF89D28117C9A00F3D110 /* Home */,
 				8A3BF89E28117C9E00F3D110 /* Search */,
 				8A3BF89F28117CA600F3D110 /* Reels */,
@@ -359,7 +359,7 @@
 				8AC6468827FD57EE00377BB2 /* SignUpFirstViewController.swift in Sources */,
 				8AC6468D27FD65F900377BB2 /* PadedTextField.swift in Sources */,
 				8A3BF8A528117D7500F3D110 /* SearchViewController.swift in Sources */,
-				8A3BF89728115FA000F3D110 /* MainTabBarController.swift in Sources */,
+				8A3BF89728115FA000F3D110 /* TabBarController.swift in Sources */,
 				8A3BF88D280FFA1500F3D110 /* String+Localizing.swift in Sources */,
 				8AC6466D27FD547A00377BB2 /* SceneDelegate.swift in Sources */,
 				8A3BF8A328117D3B00F3D110 /* HomeViewController.swift in Sources */,

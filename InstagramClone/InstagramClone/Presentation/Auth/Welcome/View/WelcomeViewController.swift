@@ -113,7 +113,7 @@ final class WelcomeViewController: UIViewController {
     }
     
     @objc private func completeDidTouch() {
-        let mainTabBarController = MainTabBarController()
+        let mainTabBarController = TabBarController()
         mainTabBarController.modalPresentationStyle = .fullScreen
         self.present(mainTabBarController, animated: false)
     }

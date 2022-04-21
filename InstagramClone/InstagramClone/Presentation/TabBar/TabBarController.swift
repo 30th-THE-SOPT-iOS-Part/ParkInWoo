@@ -1,5 +1,5 @@
 //
-//  MainTabBar.swift
+//  TabBarController.swift
 //  InstagramClone
 //
 //  Created by Inwoo Park on 2022/04/21.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class MainTabBarController: UITabBarController {
+final class TabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
