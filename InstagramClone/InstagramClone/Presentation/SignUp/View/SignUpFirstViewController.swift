@@ -10,11 +10,55 @@ import UIKit
 final class SignUpFirstViewController: UIViewController {
     
     private lazy var defaultScrollView = UIScrollView()
-    private lazy var backButton = UIButton()
-    private lazy var titleLabel = UILabel()
-    private lazy var guideLabel = UILabel()
-    private lazy var inputTextField = PadedTextField()
-    private lazy var nextButton = UIButton()
+    
+    private lazy var backButton: UIButton = {
+        let button = UIButton()
+        var config = UIButton.Configuration.plain()
+        config.image = .back
+        button.configuration = config
+        button.addTarget(self, action: #selector(backDidTouch), for: .touchUpInside)
+        return button
+    }()
+    
+    private lazy var titleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "사용자 이름 만들기".localized()
+        label.font = .systemFont(ofSize: 24)
+        return label
+    }()
+    
+    private lazy var guideLabel: UILabel = {
+        let label = UILabel()
+        label.text = "새 계정에 사용할 사용자 이름을 선택하세요. 나중에 언제든지 변경할 수 있습니다".localized()
+        label.font = .systemFont(ofSize: 12)
+        label.numberOfLines = 2
+        label.textAlignment = .center
+        label.textColor = .systemGray
+        return label
+    }()
+    
+    private lazy var inputTextField: PadedTextField = {
+        let textField = PadedTextField()
+        textField.placeholder = "사용자 이름".localized()
+        textField.layer.borderWidth = 1
+        textField.layer.borderColor = UIColor.systemGray3.cgColor
+        textField.layer.cornerRadius = 3
+        textField.backgroundColor = .systemGray6
+        textField.clearButtonMode = .whileEditing
+        textField.delegate = self
+        return textField
+    }()
+    
+    private lazy var nextButton: UIButton = {
+        let button = UIButton()
+        var config = UIButton.Configuration.filled()
+        config.title = "다음".localized()
+        button.configuration = config
+        button.isUserInteractionEnabled = false
+        button.layer.opacity = 0.5
+        button.addTarget(self, action: #selector(nextDidTouch), for: .touchUpInside)
+        return button
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +67,6 @@ final class SignUpFirstViewController: UIViewController {
 
     private func configure() {
         self.view.backgroundColor = .white
-        
         self.navigationController?.isNavigationBarHidden = true
         self.defaultScrollViewConfigure()
         self.backButtonConfigure()
@@ -46,11 +89,6 @@ final class SignUpFirstViewController: UIViewController {
     
     private func backButtonConfigure() {
         self.defaultScrollView.addSubview(self.backButton)
-        var config = UIButton.Configuration.plain()
-        config.image = .back
-        self.backButton.configuration = config
-        self.backButton.addTarget(self, action: #selector(backDidTouch), for: .touchUpInside)
-        
         self.backButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             self.backButton.topAnchor.constraint(equalTo: self.defaultScrollView.topAnchor, constant: 14),
@@ -60,9 +98,6 @@ final class SignUpFirstViewController: UIViewController {
     
     private func titleLabelConfigure() {
         self.defaultScrollView.addSubview(self.titleLabel)
-        self.titleLabel.text = "사용자 이름 만들기".localized()
-        self.titleLabel.font = .systemFont(ofSize: 24)
-        
         self.titleLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             self.titleLabel.topAnchor.constraint(equalTo: self.backButton.bottomAnchor, constant: 10),
@@ -72,12 +107,6 @@ final class SignUpFirstViewController: UIViewController {
     
     private func guideLabelConfigure() {
         self.defaultScrollView.addSubview(self.guideLabel)
-        self.guideLabel.text = "새 계정에 사용할 사용자 이름을 선택하세요. 나중에 언제든지 변경할 수 있습니다".localized()
-        self.guideLabel.font = .systemFont(ofSize: 12)
-        self.guideLabel.numberOfLines = 2
-        self.guideLabel.textAlignment = .center
-        self.guideLabel.textColor = .systemGray
-        
         self.guideLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             self.guideLabel.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: 19),
@@ -88,14 +117,6 @@ final class SignUpFirstViewController: UIViewController {
     
     private func nameTextFieldConfigure() {
         self.defaultScrollView.addSubview(self.inputTextField)
-        self.inputTextField.placeholder = "사용자 이름".localized()
-        self.inputTextField.layer.borderWidth = 1
-        self.inputTextField.layer.borderColor = UIColor.systemGray3.cgColor
-        self.inputTextField.layer.cornerRadius = 3
-        self.inputTextField.backgroundColor = .systemGray6
-        self.inputTextField.clearButtonMode = .whileEditing
-        self.inputTextField.delegate = self
-        
         self.inputTextField.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             self.inputTextField.topAnchor.constraint(equalTo: self.guideLabel.bottomAnchor, constant: 19),
@@ -107,13 +128,6 @@ final class SignUpFirstViewController: UIViewController {
     
     private func nextButtonConfigure() {
         self.defaultScrollView.addSubview(self.nextButton)
-        var config = UIButton.Configuration.filled()
-        config.title = "다음".localized()
-        self.nextButton.configuration = config
-        self.nextButton.isUserInteractionEnabled = false
-        self.nextButton.layer.opacity = 0.5
-        self.nextButton.addTarget(self, action: #selector(nextDidTouch), for: .touchUpInside)
-        
         self.nextButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             self.nextButton.topAnchor.constraint(equalTo: self.inputTextField.bottomAnchor, constant: 22),

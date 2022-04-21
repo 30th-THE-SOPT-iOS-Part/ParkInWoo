@@ -10,15 +10,96 @@ import UIKit
 final class LoginViewController: UIViewController {
     
     private lazy var defaultScrollView = UIScrollView()
-    private lazy var logoImageView = UIImageView()
-    private lazy var idTextField = PadedTextField()
-    private lazy var pwTextField = PadedTextField()
-    private lazy var toggleShowHideButton = UIButton()
-    private lazy var pwForgotLabel = UILabel()
-    private lazy var loginButton = UIButton()
-    private lazy var labelOuterStackView = UIStackView()
-    private lazy var noAccountLabel = UILabel()
-    private lazy var signUpLabel = UILabel()
+    
+    private lazy var logoImageView: UIImageView  = {
+        let imageView = UIImageView()
+        imageView.image = .logo
+        return imageView
+    }()
+    
+    private lazy var idTextField: PadedTextField = {
+        let textField = PadedTextField()
+        textField.placeholder = "전화번호, 사용자 이름 또는 이메일".localized()
+        textField.layer.borderWidth = 1
+        textField.layer.borderColor = UIColor.systemGray3.cgColor
+        textField.layer.cornerRadius = 3
+        textField.backgroundColor = .systemGray6
+        textField.clearButtonMode = .whileEditing
+        textField.delegate = self
+        return textField
+    }()
+    
+    private lazy var pwTextField: PadedTextField = {
+        let textField = PadedTextField()
+        textField.placeholder = "비밀번호".localized()
+        textField.layer.borderWidth = 1
+        textField.layer.borderColor = UIColor.systemGray3.cgColor
+        textField.layer.cornerRadius = 3
+        textField.backgroundColor = .systemGray6
+        textField.isSecureTextEntry = true
+        textField.delegate = self
+        textField.rightView = self.toggleShowHideButton
+        textField.rightViewMode = .always
+        return textField
+    }()
+    
+    private lazy var toggleShowHideButton: UIButton = {
+        let button = UIButton()
+        var config = UIButton.Configuration.plain()
+        config.image = .shownEye
+        config.contentInsets = NSDirectionalEdgeInsets.init(top: 10, leading: 10, bottom: 10, trailing: 5)
+        button.configuration = config
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(showHideDidTouch), for: .touchUpInside)
+        return button
+    }()
+    
+    private lazy var pwForgotLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .systemBlue
+        label.text = "비밀번호를 잊으셨나요?".localized()
+        label.font = .systemFont(ofSize: 10)
+        return label
+    }()
+    
+    private lazy var loginButton: UIButton = {
+        let button = UIButton()
+        var config = UIButton.Configuration.filled()
+        config.title = "로그인".localized()
+        button.configuration = config
+        button.isUserInteractionEnabled = false
+        button.layer.opacity = 0.5
+        button.addTarget(self, action: #selector(loginDidTouch), for: .touchUpInside)
+        return button
+    }()
+    
+    private lazy var labelOuterStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.addArrangedSubview(self.noAccountLabel)
+        stackView.addArrangedSubview(self.signUpLabel)
+        stackView.spacing = 3
+        return stackView
+    }()
+    
+    private lazy var noAccountLabel: UILabel = {
+        let label = UILabel()
+        label.text = "계정이 없으신가요?".localized()
+        label.textColor = .systemGray
+        label.font = .systemFont(ofSize: 14)
+        return label
+    }()
+    
+    private lazy var signUpLabel: UILabel = {
+        let label = UILabel()
+        label.text = "가입하기".localized()
+        label.textColor = .systemBlue
+        label.isUserInteractionEnabled = true
+        label.font = .systemFont(ofSize: 14)
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(signUpDidTouch))
+        label.addGestureRecognizer(tapGestureRecognizer)
+        return label
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +108,6 @@ final class LoginViewController: UIViewController {
     
     private func configure() {
         self.view.backgroundColor = .white
-        
         self.defaultScrollViewConfigure()
         self.logoImageViewConfigure()
         self.idTextFieldConfigure()
@@ -50,7 +130,6 @@ final class LoginViewController: UIViewController {
     
     private func logoImageViewConfigure() {
         self.defaultScrollView.addSubview(self.logoImageView)
-        self.logoImageView.image = .logo
         self.logoImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             self.logoImageView.topAnchor.constraint(equalTo: self.defaultScrollView.topAnchor, constant: 170),
@@ -60,14 +139,6 @@ final class LoginViewController: UIViewController {
     
     private func idTextFieldConfigure() {
         self.defaultScrollView.addSubview(self.idTextField)
-        self.idTextField.placeholder = "전화번호, 사용자 이름 또는 이메일".localized()
-        self.idTextField.layer.borderWidth = 1
-        self.idTextField.layer.borderColor = UIColor.systemGray3.cgColor
-        self.idTextField.layer.cornerRadius = 3
-        self.idTextField.backgroundColor = .systemGray6
-        self.idTextField.clearButtonMode = .whileEditing
-        self.idTextField.delegate = self
-        
         self.idTextField.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             self.idTextField.topAnchor.constraint(equalTo: self.logoImageView.bottomAnchor, constant: 33),
@@ -79,24 +150,6 @@ final class LoginViewController: UIViewController {
     
     private func pwTextFieldConfigure() {
         self.defaultScrollView.addSubview(self.pwTextField)
-        self.pwTextField.placeholder = "비밀번호".localized()
-        self.pwTextField.layer.borderWidth = 1
-        self.pwTextField.layer.borderColor = UIColor.systemGray3.cgColor
-        self.pwTextField.layer.cornerRadius = 3
-        self.pwTextField.backgroundColor = .systemGray6
-        self.pwTextField.isSecureTextEntry = true
-        self.pwTextField.delegate = self
-       
-        var config = UIButton.Configuration.plain()
-        config.image = .shownEye
-        config.contentInsets = NSDirectionalEdgeInsets.init(top: 10, leading: 10, bottom: 10, trailing: 5)
-        self.toggleShowHideButton.configuration = config
-        self.toggleShowHideButton.translatesAutoresizingMaskIntoConstraints = false
-        self.toggleShowHideButton.addTarget(self, action: #selector(showHideDidTouch), for: .touchUpInside)
-        
-        self.pwTextField.rightView = self.toggleShowHideButton
-        self.pwTextField.rightViewMode = .always
-        
         self.pwTextField.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             self.pwTextField.topAnchor.constraint(equalTo: self.idTextField.bottomAnchor, constant: 16),
@@ -108,10 +161,6 @@ final class LoginViewController: UIViewController {
     
     private func pwForgotLabelCongifugure() {
         self.defaultScrollView.addSubview(self.pwForgotLabel)
-        self.pwForgotLabel.textColor = .systemBlue
-        self.pwForgotLabel.text = "비밀번호를 잊으셨나요?".localized()
-        self.pwForgotLabel.font = .systemFont(ofSize: 10)
-        
         self.pwForgotLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             self.pwForgotLabel.topAnchor.constraint(equalTo: self.pwTextField.bottomAnchor, constant: 15),
@@ -121,13 +170,6 @@ final class LoginViewController: UIViewController {
     
     private func loginButtonCongifugure() {
         self.defaultScrollView.addSubview(self.loginButton)
-        var config = UIButton.Configuration.filled()
-        config.title = "로그인".localized()
-        self.loginButton.configuration = config
-        self.loginButton.isUserInteractionEnabled = false
-        self.loginButton.layer.opacity = 0.5
-        self.loginButton.addTarget(self, action: #selector(loginDidTouch), for: .touchUpInside)
-        
         self.loginButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             self.loginButton.topAnchor.constraint(equalTo: self.pwForgotLabel.bottomAnchor, constant: 34),
@@ -139,21 +181,6 @@ final class LoginViewController: UIViewController {
     
     private func labelOuterStackViewCongifugure() {
         self.defaultScrollView.addSubview(self.labelOuterStackView)
-        self.labelOuterStackView.axis = .horizontal
-        self.labelOuterStackView.addArrangedSubview(self.noAccountLabel)
-        self.labelOuterStackView.addArrangedSubview(self.signUpLabel)
-        self.labelOuterStackView.spacing = 3
-        
-        self.noAccountLabel.text = "계정이 없으신가요?".localized()
-        self.noAccountLabel.textColor = .systemGray
-        self.noAccountLabel.font = .systemFont(ofSize: 14)
-        self.signUpLabel.text = "가입하기".localized()
-        self.signUpLabel.textColor = .systemBlue
-        self.signUpLabel.isUserInteractionEnabled = true
-        self.signUpLabel.font = .systemFont(ofSize: 14)
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(signUpDidTouch))
-        self.signUpLabel.addGestureRecognizer(tapGestureRecognizer)
-        
         self.labelOuterStackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             self.labelOuterStackView.topAnchor.constraint(equalTo: self.loginButton.bottomAnchor, constant: 34),
@@ -176,7 +203,10 @@ final class LoginViewController: UIViewController {
         User.shared.pw = pwTextField.text
         let welcomeViewController = WelcomeViewController()
         welcomeViewController.modalPresentationStyle = .fullScreen
-        self.present(welcomeViewController, animated: true, completion: nil)
+        self.present(welcomeViewController, animated: true) {
+            self.idTextField.text = nil
+            self.pwTextField.text = nil
+        }
     }
     
     @objc private func signUpDidTouch() {
