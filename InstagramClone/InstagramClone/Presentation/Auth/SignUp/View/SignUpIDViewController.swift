@@ -1,5 +1,5 @@
 //
-//  SignUpViewController.swift
+//  SignUpIDViewController.swift
 //  InstagramClone
 //
 //  Created by Inwoo Park on 2022/04/06.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class SignUpFirstViewController: UIViewController {
+final class SignUpIDViewController: UIViewController {
     
     private lazy var defaultScrollView = UIScrollView()
     
@@ -144,13 +144,13 @@ final class SignUpFirstViewController: UIViewController {
     
     @objc private func nextDidTouch() {
         User.shared.id = inputTextField.text
-        let signUpSecondViewController = SignUpSecondViewController()
+        let signUpSecondViewController = SignUpPasswordViewController()
         self.navigationController?.pushViewController(signUpSecondViewController, animated: true)
     }
     
 }
 
-extension SignUpFirstViewController: UITextFieldDelegate {
+extension SignUpIDViewController: UITextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {
         let inputCompleted = inputTextField.hasText
         self.nextButton.isUserInteractionEnabled = inputCompleted

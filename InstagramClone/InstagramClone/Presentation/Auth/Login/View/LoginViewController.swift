@@ -210,7 +210,7 @@ final class LoginViewController: UIViewController {
     }
     
     @objc private func signUpDidTouch() {
-        let signUpViewController = SignUpFirstViewController()
+        let signUpViewController = SignUpIDViewController()
         self.navigationController?.pushViewController(signUpViewController, animated: true)
     }
     
