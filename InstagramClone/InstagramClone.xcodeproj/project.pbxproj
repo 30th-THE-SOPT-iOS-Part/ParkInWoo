@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		8A3BF88D280FFA1500F3D110 /* String+Localizing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3BF88C280FFA1500F3D110 /* String+Localizing.swift */; };
+		8A3BF890281157E800F3D110 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 8A3BF88F281157E800F3D110 /* RxCocoa */; };
+		8A3BF892281157E800F3D110 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 8A3BF891281157E800F3D110 /* RxRelay */; };
+		8A3BF894281157E800F3D110 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8A3BF893281157E800F3D110 /* RxSwift */; };
 		8A8EA86228027202004DB3EF /* UIImage+Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8EA86128027202004DB3EF /* UIImage+Assets.swift */; };
 		8A8EA8672802745B004DB3EF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8A8EA8692802745B004DB3EF /* Localizable.strings */; };
 		8AC6466B27FD547A00377BB2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC6466A27FD547A00377BB2 /* AppDelegate.swift */; };
@@ -47,6 +50,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A3BF894281157E800F3D110 /* RxSwift in Frameworks */,
+				8A3BF892281157E800F3D110 /* RxRelay in Frameworks */,
+				8A3BF890281157E800F3D110 /* RxCocoa in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -202,6 +208,11 @@
 			dependencies = (
 			);
 			name = InstagramClone;
+			packageProductDependencies = (
+				8A3BF88F281157E800F3D110 /* RxCocoa */,
+				8A3BF891281157E800F3D110 /* RxRelay */,
+				8A3BF893281157E800F3D110 /* RxSwift */,
+			);
 			productName = InstagramClone;
 			productReference = 8AC6466727FD547A00377BB2 /* InstagramClone.app */;
 			productType = "com.apple.product-type.application";
@@ -232,6 +243,9 @@
 				ja,
 			);
 			mainGroup = 8AC6465E27FD547A00377BB2;
+			packageReferences = (
+				8A3BF88E281157E800F3D110 /* XCRemoteSwiftPackageReference "RxSwift" */,
+			);
 			productRefGroup = 8AC6466827FD547A00377BB2 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -421,6 +435,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = M5F64J2N4N;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = InstagramClone/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -447,6 +462,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = M5F64J2N4N;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = InstagramClone/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -488,6 +504,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8A3BF88E281157E800F3D110 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8A3BF88F281157E800F3D110 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8A3BF88E281157E800F3D110 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		8A3BF891281157E800F3D110 /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8A3BF88E281157E800F3D110 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
+		};
+		8A3BF893281157E800F3D110 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8A3BF88E281157E800F3D110 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8AC6465F27FD547A00377BB2 /* Project object */;
 }
