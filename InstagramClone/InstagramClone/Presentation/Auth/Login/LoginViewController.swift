@@ -17,7 +17,7 @@ final class LoginViewController: UIViewController {
     
     private lazy var logoImageView: UIImageView  = {
         let imageView = UIImageView()
-        imageView.image = .logo
+        imageView.image = Asset.Common.logo
         return imageView
     }()
     
@@ -48,7 +48,7 @@ final class LoginViewController: UIViewController {
     private lazy var toggleShowHideButton: UIButton = {
         let button = UIButton()
         var config = UIButton.Configuration.plain()
-        config.image = .hiddenEye
+        config.image = Asset.Login.hiddenEye
         config.contentInsets = NSDirectionalEdgeInsets.init(top: 12, leading: 0, bottom: 12, trailing: 10)
         button.configuration = config
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -111,9 +111,9 @@ final class LoginViewController: UIViewController {
     @objc private func showHideDidTouch() {
         self.pwTextField.isSecureTextEntry.toggle()
         if self.pwTextField.isSecureTextEntry {
-            self.toggleShowHideButton.setImage(.hiddenEye, for: .normal)
+            self.toggleShowHideButton.setImage(Asset.Login.hiddenEye, for: .normal)
         } else {
-            self.toggleShowHideButton.setImage(.shownEye, for: .normal)
+            self.toggleShowHideButton.setImage(Asset.Login.shownEye, for: .normal)
         }
     }
     

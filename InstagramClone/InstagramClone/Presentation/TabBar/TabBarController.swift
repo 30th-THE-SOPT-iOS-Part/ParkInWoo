@@ -13,8 +13,8 @@ final class TabBarController: UITabBarController {
         let home = HomeViewController()
         home.tabBarItem = UITabBarItem(
             title: .none,
-            image: .home?.withRenderingMode(.alwaysTemplate),
-            selectedImage: .homeSelected?.withRenderingMode(.alwaysTemplate)
+            image: Asset.TabBar.home?.withRenderingMode(.alwaysTemplate),
+            selectedImage: Asset.TabBar.homeSelected?.withRenderingMode(.alwaysTemplate)
         )
         return home
     }()
@@ -23,8 +23,8 @@ final class TabBarController: UITabBarController {
         let search = SearchViewController()
         search.tabBarItem = UITabBarItem(
             title: .none,
-            image: .search?.withRenderingMode(.alwaysTemplate),
-            selectedImage: .searchSelected?.withRenderingMode(.alwaysTemplate)
+            image: Asset.TabBar.search?.withRenderingMode(.alwaysTemplate),
+            selectedImage: Asset.TabBar.searchSelected?.withRenderingMode(.alwaysTemplate)
         )
         return search
     }()
@@ -33,8 +33,8 @@ final class TabBarController: UITabBarController {
         let reels = ReelsViewController()
         reels.tabBarItem = UITabBarItem(
             title: .none,
-            image: .reels?.withRenderingMode(.alwaysTemplate),
-            selectedImage: .reelsSelected?.withRenderingMode(.alwaysTemplate)
+            image: Asset.TabBar.reels?.withRenderingMode(.alwaysTemplate),
+            selectedImage: Asset.TabBar.reelsSelected?.withRenderingMode(.alwaysTemplate)
         )
         return reels
     }()
@@ -43,8 +43,8 @@ final class TabBarController: UITabBarController {
         let shop = ShopViewController()
         shop.tabBarItem = UITabBarItem(
             title: .none,
-            image: .shop?.withRenderingMode(.alwaysTemplate),
-            selectedImage: .shopSelected?.withRenderingMode(.alwaysTemplate)
+            image: Asset.TabBar.shop?.withRenderingMode(.alwaysTemplate),
+            selectedImage: Asset.TabBar.shopSelected?.withRenderingMode(.alwaysTemplate)
         )
         return shop
     }()
@@ -53,8 +53,8 @@ final class TabBarController: UITabBarController {
         let profile = ProfileViewController()
         profile.tabBarItem = UITabBarItem(
             title: .none,
-            image: .profile?.withRenderingMode(.alwaysOriginal),
-            selectedImage: .profileSelected?.withRenderingMode(.alwaysOriginal)
+            image: Asset.TabBar.profile?.withRenderingMode(.alwaysOriginal),
+            selectedImage: Asset.TabBar.profileSelected?.withRenderingMode(.alwaysOriginal)
         )
         return profile
     }()

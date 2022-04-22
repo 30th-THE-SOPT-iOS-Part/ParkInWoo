@@ -18,7 +18,7 @@ final class SignUpIDViewController: UIViewController {
     private lazy var backButton: UIButton = {
         let button = UIButton()
         var config = UIButton.Configuration.plain()
-        config.image = .back
+        config.image = Asset.NavBar.back
         button.configuration = config
         button.addTarget(self, action: #selector(backDidTouch), for: .touchUpInside)
         return button

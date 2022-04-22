@@ -18,7 +18,7 @@ final class SignUpPasswordViewController: UIViewController {
     private lazy var backButton: UIButton = {
         let button = UIButton()
         var config = UIButton.Configuration.plain()
-        config.image = .back
+        config.image = Asset.NavBar.back
         button.configuration = config
         button.addTarget(self, action: #selector(backDidTouch), for: .touchUpInside)
         return button
@@ -58,7 +58,7 @@ final class SignUpPasswordViewController: UIViewController {
     private lazy var toggleShowHideButton: UIButton = {
         let button = UIButton()
         var config = UIButton.Configuration.plain()
-        config.image = .hiddenEye
+        config.image = Asset.Login.hiddenEye
         config.contentInsets = NSDirectionalEdgeInsets.init(top: 10, leading: 10, bottom: 10, trailing: 5)
         button.configuration = config
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -85,9 +85,9 @@ final class SignUpPasswordViewController: UIViewController {
     @objc private func showHideDidTouch() {
         self.inputTextField.isSecureTextEntry.toggle()
         if self.inputTextField.isSecureTextEntry {
-            self.toggleShowHideButton.setImage(.hiddenEye, for: .normal)
+            self.toggleShowHideButton.setImage(Asset.Login.hiddenEye, for: .normal)
         } else {
-            self.toggleShowHideButton.setImage(.shownEye, for: .normal)
+            self.toggleShowHideButton.setImage(Asset.Login.shownEye, for: .normal)
         }
     }
     
