@@ -48,8 +48,8 @@ final class LoginViewController: UIViewController {
     private lazy var toggleShowHideButton: UIButton = {
         let button = UIButton()
         var config = UIButton.Configuration.plain()
-        config.image = .shownEye
-        config.contentInsets = NSDirectionalEdgeInsets.init(top: 10, leading: 10, bottom: 10, trailing: 5)
+        config.image = .hiddenEye
+        config.contentInsets = NSDirectionalEdgeInsets.init(top: 12, leading: 0, bottom: 12, trailing: 10)
         button.configuration = config
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(showHideDidTouch), for: .touchUpInside)
@@ -105,15 +105,15 @@ final class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureUI()
-        self.bind()
+        self.bindViewModel()
     }
     
     @objc private func showHideDidTouch() {
         self.pwTextField.isSecureTextEntry.toggle()
         if self.pwTextField.isSecureTextEntry {
-            self.toggleShowHideButton.setImage(.shownEye, for: .normal)
-        } else {
             self.toggleShowHideButton.setImage(.hiddenEye, for: .normal)
+        } else {
+            self.toggleShowHideButton.setImage(.shownEye, for: .normal)
         }
     }
     
@@ -208,7 +208,7 @@ extension LoginViewController {
         ])
     }
     
-    private func bind() {
+    private func bindViewModel() {
         let input = LoginViewModel.Input(
             idDidEditEvent: self.idTextField.rx.text.orEmpty.asObservable(),
             passwordDidEditEvent: self.pwTextField.rx.text.orEmpty.asObservable(),

@@ -10,8 +10,8 @@ import UIKit
 extension UIImage {
     
     static let back = UIImage(named: "icn_back")
-    static let hiddenEye = UIImage(named: "icn_hiddenEye")
-    static let shownEye = UIImage(named: "icn_shownEye")
+    static let hiddenEye = UIImage(named: "icn_password_hidden")
+    static let shownEye = UIImage(named: "icn_password_shown")
     static let logo = UIImage(named: "icn_logo")
     
     static let home = UIImage(named: "icn_home")
