@@ -124,8 +124,8 @@ final class LoginViewController: UIViewController {
     
 }
 
-extension LoginViewController {
-    private func configureUI() {
+private extension LoginViewController {
+    func configureUI() {
         self.view.backgroundColor = .white
         self.defaultScrollViewConfigure()
         self.logoImageViewConfigure()
@@ -136,7 +136,7 @@ extension LoginViewController {
         self.labelOuterStackViewCongifugure()
     }
     
-    private func defaultScrollViewConfigure() {
+    func defaultScrollViewConfigure() {
         self.view.addSubview(self.defaultScrollView)
         self.defaultScrollView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -147,7 +147,7 @@ extension LoginViewController {
         ])
     }
     
-    private func logoImageViewConfigure() {
+    func logoImageViewConfigure() {
         self.defaultScrollView.addSubview(self.logoImageView)
         self.logoImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -156,7 +156,7 @@ extension LoginViewController {
         ])
     }
     
-    private func idTextFieldConfigure() {
+    func idTextFieldConfigure() {
         self.defaultScrollView.addSubview(self.idTextField)
         self.idTextField.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -167,7 +167,7 @@ extension LoginViewController {
         ])
     }
     
-    private func pwTextFieldConfigure() {
+    func pwTextFieldConfigure() {
         self.defaultScrollView.addSubview(self.pwTextField)
         self.pwTextField.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -178,7 +178,7 @@ extension LoginViewController {
         ])
     }
     
-    private func pwForgotLabelCongifugure() {
+    func pwForgotLabelCongifugure() {
         self.defaultScrollView.addSubview(self.pwForgotLabel)
         self.pwForgotLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -187,7 +187,7 @@ extension LoginViewController {
         ])
     }
     
-    private func loginButtonCongifugure() {
+    func loginButtonCongifugure() {
         self.defaultScrollView.addSubview(self.loginButton)
         self.loginButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -198,7 +198,7 @@ extension LoginViewController {
         ])
     }
     
-    private func labelOuterStackViewCongifugure() {
+    func labelOuterStackViewCongifugure() {
         self.defaultScrollView.addSubview(self.labelOuterStackView)
         self.labelOuterStackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -208,7 +208,7 @@ extension LoginViewController {
         ])
     }
     
-    private func bindViewModel() {
+    func bindViewModel() {
         let input = LoginViewModel.Input(
             idDidEditEvent: self.idTextField.rx.text.orEmpty.asObservable(),
             passwordDidEditEvent: self.pwTextField.rx.text.orEmpty.asObservable(),

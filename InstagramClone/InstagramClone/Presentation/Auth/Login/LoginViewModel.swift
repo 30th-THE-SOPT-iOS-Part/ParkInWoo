@@ -27,20 +27,20 @@ final class LoginViewModel {
     
     func transform(from input: Input) -> Output {
         input.idDidEditEvent
-            .subscribe(onNext: { id in
-                self.loginUseCase.id = id
+            .subscribe(onNext: { [weak self] id in
+                self?.loginUseCase.id = id
             })
             .disposed(by: self.disposeBag)
         
         input.passwordDidEditEvent
-            .subscribe(onNext: { password in
-                self.loginUseCase.password = password
+            .subscribe(onNext: { [weak self] password in
+                self?.loginUseCase.password = password
             })
             .disposed(by: self.disposeBag)
         
         input.tapLogin
-            .subscribe(onNext: { _ in
-                self.loginUseCase.execute()
+            .subscribe(onNext: { [weak self] _ in
+                self?.loginUseCase.execute()
             })
             .disposed(by: self.disposeBag)
         

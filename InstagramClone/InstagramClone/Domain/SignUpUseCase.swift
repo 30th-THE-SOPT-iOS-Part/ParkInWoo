@@ -11,18 +11,31 @@ import RxRelay
 
 enum SignUpError: Error {
     case alreadyExist
+    case idEmpty
+    case passwordEmpty
 }
 
 final class SignUpUseCase {
     let signUpError = PublishRelay<SignUpError>()
     let signUpSuccess = PublishRelay<Void>()
     
-    func execute(id: String, pw: String) {
+    func execute() {
+        guard let id = UserInfo.id else {
+            self.signUpError.accept(SignUpError.idEmpty)
+            return
+        }
+        
+        guard let pw = UserInfo.password else {
+            self.signUpError.accept(SignUpError.passwordEmpty)
+            return
+        }
+        
         if let _ = MockUserInfo.list[id] {
             self.signUpError.accept(SignUpError.alreadyExist)
             return
         }
         
+        MockUserInfo.list[id] = User(id: id, pw: pw)
         self.signUpSuccess.accept(())
     }
 }

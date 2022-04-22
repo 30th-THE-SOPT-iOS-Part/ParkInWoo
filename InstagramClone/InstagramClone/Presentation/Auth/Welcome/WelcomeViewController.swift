@@ -19,7 +19,7 @@ final class WelcomeViewController: UIViewController {
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        if let id = User.shared.id {
+        if let id = UserInfo.id {
             label.text = "\(id)\("님".localized()) \("Instagram에 오신 것을 환영합니다".localized())"
         }
         label.font = .systemFont(ofSize: 20)

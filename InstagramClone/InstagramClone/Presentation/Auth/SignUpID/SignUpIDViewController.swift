@@ -1,5 +1,5 @@
 //
-//  SignUpPasswordViewController.swift
+//  SignUpIDViewController.swift
 //  InstagramClone
 //
 //  Created by Inwoo Park on 2022/04/06.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class SignUpPasswordViewController: UIViewController {
+final class SignUpIDViewController: UIViewController {
     
     private lazy var defaultScrollView = UIScrollView()
     
@@ -22,14 +22,14 @@ final class SignUpPasswordViewController: UIViewController {
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "비밀번호 만들기".localized()
-        label.font = .systemFont(ofSize: 23)
+        label.text = "사용자 이름 만들기".localized()
+        label.font = .systemFont(ofSize: 24)
         return label
     }()
     
     private lazy var guideLabel: UILabel = {
         let label = UILabel()
-        label.text = "비밀번호를 저장할 수 있으므로 iColud® 기기에서 로그인 정보를 입력하지 않아도 됩니다".localized()
+        label.text = "새 계정에 사용할 사용자 이름을 선택하세요. 나중에 언제든지 변경할 수 있습니다".localized()
         label.font = .systemFont(ofSize: 12)
         label.numberOfLines = 2
         label.textAlignment = .center
@@ -39,28 +39,14 @@ final class SignUpPasswordViewController: UIViewController {
     
     private lazy var inputTextField: PadedTextField = {
         let textField = PadedTextField()
-        textField.placeholder = "비밀번호".localized()
+        textField.placeholder = "사용자 이름".localized()
         textField.layer.borderWidth = 1
         textField.layer.borderColor = UIColor.systemGray3.cgColor
         textField.layer.cornerRadius = 3
         textField.backgroundColor = .systemGray6
         textField.clearButtonMode = .whileEditing
-        textField.isSecureTextEntry = true
         textField.delegate = self
-        textField.rightView = self.toggleShowHideButton
-        textField.rightViewMode = .always
         return textField
-    }()
-    
-    private lazy var toggleShowHideButton: UIButton = {
-        let button = UIButton()
-        var config = UIButton.Configuration.plain()
-        config.image = .shownEye
-        config.contentInsets = NSDirectionalEdgeInsets.init(top: 10, leading: 10, bottom: 10, trailing: 5)
-        button.configuration = config
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(showHideDidTouch), for: .touchUpInside)
-        return button
     }()
     
     private lazy var nextButton: UIButton = {
@@ -152,31 +138,19 @@ final class SignUpPasswordViewController: UIViewController {
         ])
     }
     
-    @objc private func showHideDidTouch() {
-        self.inputTextField.isSecureTextEntry.toggle()
-        if self.inputTextField.isSecureTextEntry {
-            self.toggleShowHideButton.setImage(.shownEye, for: .normal)
-        } else {
-            self.toggleShowHideButton.setImage(.hiddenEye, for: .normal)
-        }
-    }
-    
     @objc private func backDidTouch() {
         self.navigationController?.popViewController(animated: true)
     }
     
     @objc private func nextDidTouch() {
-        User.shared.pw = inputTextField.text
-        let welcomeViewController = WelcomeViewController()
-        welcomeViewController.modalPresentationStyle = .fullScreen
-        self.present(welcomeViewController, animated: true) {
-            self.navigationController?.popToRootViewController(animated: false)
-        }
+        UserInfo.id = self.inputTextField.text
+        let signUpSecondViewController = SignUpPasswordViewController()
+        self.navigationController?.pushViewController(signUpSecondViewController, animated: true)
     }
     
 }
 
-extension SignUpPasswordViewController: UITextFieldDelegate {
+extension SignUpIDViewController: UITextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {
         let inputCompleted = inputTextField.hasText
         self.nextButton.isUserInteractionEnabled = inputCompleted
