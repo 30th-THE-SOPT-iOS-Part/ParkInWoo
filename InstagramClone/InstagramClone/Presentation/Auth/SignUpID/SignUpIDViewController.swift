@@ -158,6 +158,7 @@ private extension SignUpIDViewController {
         
         output.enableNext
             .asDriver(onErrorJustReturn: false)
+            .throttle(.milliseconds(300))
             .drive(onNext: { [weak self] result in
                 self?.nextButton.isUserInteractionEnabled = result
                 self?.nextButton.alpha = result ? 1 : 0.5

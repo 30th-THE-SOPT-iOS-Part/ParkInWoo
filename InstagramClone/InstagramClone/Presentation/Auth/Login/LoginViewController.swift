@@ -219,6 +219,7 @@ private extension LoginViewController {
         
         output.enableLogin
             .asDriver(onErrorJustReturn: false)
+            .throttle(.milliseconds(300))
             .drive(onNext: { [weak self] result in
                 self?.loginButton.isUserInteractionEnabled = result
                 self?.loginButton.alpha = result ? 1 : 0.5
