@@ -6,8 +6,12 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 final class LoginViewController: UIViewController {
+    private let disposeBag = DisposeBag()
+    private let viewModel = LoginViewModel()
     
     private lazy var defaultScrollView = UIScrollView()
     
@@ -25,7 +29,6 @@ final class LoginViewController: UIViewController {
         textField.layer.cornerRadius = 3
         textField.backgroundColor = .systemGray6
         textField.clearButtonMode = .whileEditing
-        textField.delegate = self
         return textField
     }()
     
@@ -37,7 +40,6 @@ final class LoginViewController: UIViewController {
         textField.layer.cornerRadius = 3
         textField.backgroundColor = .systemGray6
         textField.isSecureTextEntry = true
-        textField.delegate = self
         textField.rightView = self.toggleShowHideButton
         textField.rightViewMode = .always
         return textField
@@ -69,7 +71,6 @@ final class LoginViewController: UIViewController {
         button.configuration = config
         button.isUserInteractionEnabled = false
         button.layer.opacity = 0.5
-        button.addTarget(self, action: #selector(loginDidTouch), for: .touchUpInside)
         return button
     }()
     
@@ -103,10 +104,28 @@ final class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.configure()
+        self.configureUI()
+        self.bind()
     }
     
-    private func configure() {
+    @objc private func showHideDidTouch() {
+        self.pwTextField.isSecureTextEntry.toggle()
+        if self.pwTextField.isSecureTextEntry {
+            self.toggleShowHideButton.setImage(.shownEye, for: .normal)
+        } else {
+            self.toggleShowHideButton.setImage(.hiddenEye, for: .normal)
+        }
+    }
+    
+    @objc private func signUpDidTouch() {
+        let signUpViewController = SignUpIDViewController()
+        self.navigationController?.pushViewController(signUpViewController, animated: true)
+    }
+    
+}
+
+extension LoginViewController {
+    private func configureUI() {
         self.view.backgroundColor = .white
         self.defaultScrollViewConfigure()
         self.logoImageViewConfigure()
@@ -189,37 +208,42 @@ final class LoginViewController: UIViewController {
         ])
     }
     
-    @objc private func showHideDidTouch() {
-        self.pwTextField.isSecureTextEntry.toggle()
-        if self.pwTextField.isSecureTextEntry {
-            self.toggleShowHideButton.setImage(.shownEye, for: .normal)
-        } else {
-            self.toggleShowHideButton.setImage(.hiddenEye, for: .normal)
-        }
-    }
-    
-    @objc private func loginDidTouch() {
-        User.shared.id = idTextField.text
-        User.shared.pw = pwTextField.text
-        let welcomeViewController = WelcomeViewController()
-        welcomeViewController.modalPresentationStyle = .fullScreen
-        self.present(welcomeViewController, animated: true) {
-            self.idTextField.text = nil
-            self.pwTextField.text = nil
-        }
-    }
-    
-    @objc private func signUpDidTouch() {
-        let signUpViewController = SignUpIDViewController()
-        self.navigationController?.pushViewController(signUpViewController, animated: true)
-    }
-    
-}
-
-extension LoginViewController: UITextFieldDelegate {
-    func textFieldDidChangeSelection(_ textField: UITextField) {
-        let inputCompleted = idTextField.hasText && pwTextField.hasText
-        self.loginButton.isUserInteractionEnabled = inputCompleted
-        self.loginButton.alpha = inputCompleted ? 1 : 0.5
+    private func bind() {
+        let input = LoginViewModel.Input(
+            idDidEditEvent: self.idTextField.rx.text.orEmpty.asObservable(),
+            passwordDidEditEvent: self.pwTextField.rx.text.orEmpty.asObservable(),
+            tapLogin: self.loginButton.rx.tap.asObservable()
+        )
+        
+        let output = self.viewModel.transform(from: input)
+        
+        output.enableLogin
+            .asDriver(onErrorJustReturn: false)
+            .drive(onNext: { [weak self] result in
+                self?.loginButton.isUserInteractionEnabled = result
+                self?.loginButton.alpha = result ? 1 : 0.5
+            })
+            .disposed(by: self.disposeBag)
+        
+        output.goToMain
+            .asDriver(onErrorJustReturn: false)
+            .drive(onNext: { [weak self] result in
+                if !result { return }
+                let welcomeViewController = WelcomeViewController()
+                welcomeViewController.modalPresentationStyle = .fullScreen
+                self?.present(welcomeViewController, animated: true) {
+                    self?.idTextField.text = nil
+                    self?.pwTextField.text = nil
+                }
+            })
+            .disposed(by: self.disposeBag)
+        
+        output.errorMessage
+            .asDriver(onErrorJustReturn: "")
+            .drive(onNext: { error in
+                // TODO: 에러처리
+                print(error)
+            })
+            .disposed(by: self.disposeBag)
     }
 }

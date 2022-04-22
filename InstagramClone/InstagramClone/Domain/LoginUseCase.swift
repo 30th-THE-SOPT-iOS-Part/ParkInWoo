@@ -14,16 +14,19 @@ enum LoginError: Error {
 }
 
 final class LoginUseCase {
+    var id: String?
+    var password: String?
     let loginError = PublishRelay<LoginError>()
     let loginSuccess = PublishRelay<Void>()
     
-    func execute(id: String, pw: String) {
-        guard let user = MockUserInfo.list[id] else {
+    func execute() {
+        guard let id = self.id,
+              let user = MockUserInfo.list[id] else {
             self.loginError.accept(LoginError.idNotMatch)
             return
         }
         
-        if user.pw != pw {
+        if user.pw != self.password {
             self.loginError.accept(LoginError.pwNotMatch)
             return
         }
