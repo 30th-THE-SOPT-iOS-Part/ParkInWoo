@@ -7,9 +7,13 @@
 
 import Foundation
 
-class User {
-    static var shared: User = User()
-    private init() {}
+final class User {
+    static var shared = User(id: "", pw: "")
+    
+    init(id: String, pw: String) {
+        self.id = id
+        self.pw = pw
+    }
     
     var id: String?
     var pw: String?
