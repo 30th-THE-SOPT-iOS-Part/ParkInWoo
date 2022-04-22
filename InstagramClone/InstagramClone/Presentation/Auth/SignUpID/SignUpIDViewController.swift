@@ -6,8 +6,12 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 final class SignUpIDViewController: UIViewController {
+    private let disposeBag = DisposeBag()
+    private let viewModel = SignUpIDViewModel()
     
     private lazy var defaultScrollView = UIScrollView()
     
@@ -45,7 +49,6 @@ final class SignUpIDViewController: UIViewController {
         textField.layer.cornerRadius = 3
         textField.backgroundColor = .systemGray6
         textField.clearButtonMode = .whileEditing
-        textField.delegate = self
         return textField
     }()
     
@@ -56,16 +59,23 @@ final class SignUpIDViewController: UIViewController {
         button.configuration = config
         button.isUserInteractionEnabled = false
         button.layer.opacity = 0.5
-        button.addTarget(self, action: #selector(nextDidTouch), for: .touchUpInside)
         return button
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configure()
+        self.bindViewModel()
     }
+    
+    @objc private func backDidTouch() {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+}
 
-    private func configure() {
+private extension SignUpIDViewController {
+    func configure() {
         self.view.backgroundColor = .white
         self.navigationController?.isNavigationBarHidden = true
         self.defaultScrollViewConfigure()
@@ -76,7 +86,7 @@ final class SignUpIDViewController: UIViewController {
         self.nextButtonConfigure()
     }
     
-    private func defaultScrollViewConfigure() {
+    func defaultScrollViewConfigure() {
         self.view.addSubview(self.defaultScrollView)
         self.defaultScrollView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -87,7 +97,7 @@ final class SignUpIDViewController: UIViewController {
         ])
     }
     
-    private func backButtonConfigure() {
+    func backButtonConfigure() {
         self.defaultScrollView.addSubview(self.backButton)
         self.backButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -96,7 +106,7 @@ final class SignUpIDViewController: UIViewController {
         ])
     }
     
-    private func titleLabelConfigure() {
+    func titleLabelConfigure() {
         self.defaultScrollView.addSubview(self.titleLabel)
         self.titleLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -105,7 +115,7 @@ final class SignUpIDViewController: UIViewController {
         ])
     }
     
-    private func guideLabelConfigure() {
+    func guideLabelConfigure() {
         self.defaultScrollView.addSubview(self.guideLabel)
         self.guideLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -115,7 +125,7 @@ final class SignUpIDViewController: UIViewController {
         ])
     }
     
-    private func nameTextFieldConfigure() {
+    func nameTextFieldConfigure() {
         self.defaultScrollView.addSubview(self.inputTextField)
         self.inputTextField.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -126,7 +136,7 @@ final class SignUpIDViewController: UIViewController {
         ])
     }
     
-    private func nextButtonConfigure() {
+    func nextButtonConfigure() {
         self.defaultScrollView.addSubview(self.nextButton)
         self.nextButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -138,22 +148,38 @@ final class SignUpIDViewController: UIViewController {
         ])
     }
     
-    @objc private func backDidTouch() {
-        self.navigationController?.popViewController(animated: true)
-    }
-    
-    @objc private func nextDidTouch() {
-        UserInfo.id = self.inputTextField.text
-        let signUpSecondViewController = SignUpPasswordViewController()
-        self.navigationController?.pushViewController(signUpSecondViewController, animated: true)
-    }
-    
-}
-
-extension SignUpIDViewController: UITextFieldDelegate {
-    func textFieldDidChangeSelection(_ textField: UITextField) {
-        let inputCompleted = inputTextField.hasText
-        self.nextButton.isUserInteractionEnabled = inputCompleted
-        self.nextButton.alpha = inputCompleted ? 1 : 0.5
+    func bindViewModel() {
+        let input = SignUpIDViewModel.Input(
+            idDidEditEvent: self.inputTextField.rx.text.orEmpty.asObservable(),
+            tapNext: self.nextButton.rx.tap.asObservable()
+        )
+        
+        let output = self.viewModel.transform(from: input)
+        
+        output.enableNext
+            .asDriver(onErrorJustReturn: false)
+            .drive(onNext: { [weak self] result in
+                self?.nextButton.isUserInteractionEnabled = result
+                self?.nextButton.alpha = result ? 1 : 0.5
+            })
+            .disposed(by: self.disposeBag)
+        
+        output.goToNext
+            .asDriver(onErrorJustReturn: false)
+            .drive(onNext: { [weak self] result in
+                if !result { return }
+                UserInfo.id = self?.inputTextField.text
+                let signUpSecondViewController = SignUpPasswordViewController()
+                self?.navigationController?.pushViewController(signUpSecondViewController, animated: true)
+            })
+            .disposed(by: self.disposeBag)
+        
+        output.errorMessage
+            .asDriver(onErrorJustReturn: "")
+            .drive(onNext: { error in
+                // TODO: 에러처리
+                print(error)
+            })
+            .disposed(by: self.disposeBag)
     }
 }

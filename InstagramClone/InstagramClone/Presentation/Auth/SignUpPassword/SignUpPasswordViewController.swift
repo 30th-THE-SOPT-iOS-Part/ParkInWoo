@@ -186,7 +186,7 @@ private extension SignUpPasswordViewController {
             })
             .disposed(by: self.disposeBag)
         
-        output.goToWelcome
+        output.goToNext
             .asDriver(onErrorJustReturn: false)
             .drive(onNext: { [weak self] result in
                 if !result { return }

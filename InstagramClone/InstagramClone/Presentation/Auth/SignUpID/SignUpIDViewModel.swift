@@ -14,26 +14,20 @@ final class SignUpIDViewModel {
     private var disposeBag: DisposeBag = DisposeBag()
     
     struct Input {
-        let passwordDidEditEvent: Observable<String>
+        let idDidEditEvent: Observable<String>
         let tapNext: Observable<Void>
     }
     
     struct Output {
         let enableNext = PublishRelay<Bool>()
         let errorMessage = PublishRelay<String>()
-        let goToWelcome = PublishRelay<Bool>()
+        let goToNext = PublishRelay<Bool>()
     }
     
     func transform(from input: Input) -> Output {
-        input.passwordDidEditEvent
-            .subscribe(onNext: { password in
-                UserInfo.password = password
-            })
-            .disposed(by: self.disposeBag)
-        
-        input.tapNext
-            .subscribe(onNext: { [weak self] _ in
-                self?.signUpUseCase.execute()
+        input.idDidEditEvent
+            .subscribe(onNext: { id in
+                UserInfo.password = id
             })
             .disposed(by: self.disposeBag)
         
@@ -56,9 +50,15 @@ final class SignUpIDViewModel {
             })
             .disposed(by: self.disposeBag)
         
-        input.passwordDidEditEvent
+        input.idDidEditEvent
             .map{ $0.count > 0 }
             .bind(to: output.enableNext)
+            .disposed(by: self.disposeBag)
+        
+        input.tapNext
+            .subscribe(onNext: { _ in
+                output.goToNext.accept(true)
+            })
             .disposed(by: self.disposeBag)
         
         return output

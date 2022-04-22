@@ -22,7 +22,7 @@ final class SignUpPasswordViewModel {
     struct Output {
         let enableNext = PublishRelay<Bool>()
         let errorMessage = PublishRelay<String>()
-        let goToWelcome = PublishRelay<Bool>()
+        let goToNext = PublishRelay<Bool>()
     }
     
     func transform(from input: Input) -> Output {
@@ -65,7 +65,7 @@ final class SignUpPasswordViewModel {
         
         self.loginUseCase.loginSuccess
             .subscribe(onNext: { _ in
-                output.goToWelcome.accept(true)
+                output.goToNext.accept(true)
             })
             .disposed(by: self.disposeBag)
         
