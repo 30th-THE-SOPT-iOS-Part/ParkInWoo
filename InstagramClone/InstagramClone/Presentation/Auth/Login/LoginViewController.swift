@@ -121,7 +121,6 @@ final class LoginViewController: UIViewController {
         let signUpViewController = SignUpIDViewController()
         self.navigationController?.pushViewController(signUpViewController, animated: true)
     }
-    
 }
 
 private extension LoginViewController {

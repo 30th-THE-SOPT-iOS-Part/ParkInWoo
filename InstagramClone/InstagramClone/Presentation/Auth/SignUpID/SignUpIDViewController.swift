@@ -70,8 +70,7 @@ final class SignUpIDViewController: UIViewController {
     
     @objc private func backDidTouch() {
         self.navigationController?.popViewController(animated: true)
-    }
-    
+    }    
 }
 
 private extension SignUpIDViewController {
