@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ReelsViewController: UIViewController {
+final class ReelsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
