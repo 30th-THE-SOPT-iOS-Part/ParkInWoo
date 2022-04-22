@@ -192,7 +192,9 @@ private extension SignUpPasswordViewController {
                 if !result { return }
                 let welcomeViewController = WelcomeViewController()
                 welcomeViewController.modalPresentationStyle = .fullScreen
-                self?.present(welcomeViewController, animated: true)
+                self?.present(welcomeViewController, animated: true) {
+                    self?.navigationController?.popToRootViewController(animated: false)
+                }
             })
             .disposed(by: self.disposeBag)
         
