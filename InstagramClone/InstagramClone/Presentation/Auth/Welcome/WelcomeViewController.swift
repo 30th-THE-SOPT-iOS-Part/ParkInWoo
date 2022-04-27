@@ -18,7 +18,7 @@ final class WelcomeViewController: UIViewController {
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        if let id = UserInfo.id {
+        if let id = User.id {
             label.text = "\(id)\("님".localized()) \("Instagram에 오신 것을 환영합니다".localized())"
         }
         label.font = .systemFont(ofSize: 20)
@@ -59,7 +59,7 @@ final class WelcomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()        
-        self.configure()
+        configure()
     }
     
     @objc private func completeDidTouch() {
@@ -72,57 +72,57 @@ final class WelcomeViewController: UIViewController {
     }
     
     @objc private func loginDidTouch() {
-        self.dismiss(animated: true)
+        dismiss(animated: true)
     }
 }
 
 private extension WelcomeViewController {
     func configure() {
-        self.view.backgroundColor = .white
-        self.outerStackViewConfigure()
-        self.titleLabelConfigure()
-        self.guideLabelConfigure()
-        self.completeButtonConfigure()
-        self.loginLabelConfigure()
+        view.backgroundColor = .white
+        outerStackViewConfigure()
+        titleLabelConfigure()
+        guideLabelConfigure()
+        completeButtonConfigure()
+        loginLabelConfigure()
     }
     
     func outerStackViewConfigure() {
-        self.view.addSubview(self.outerStackView)
-        self.outerStackView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(outerStackView)
+        outerStackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            self.outerStackView.centerYAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerYAnchor)
+            outerStackView.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor)
         ])
     }
     
     func titleLabelConfigure() {
-        self.outerStackView.addArrangedSubview(self.titleLabel)
-        self.titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        outerStackView.addArrangedSubview(titleLabel)
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            self.titleLabel.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 75),
-            self.titleLabel.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -75)
+            titleLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 75),
+            titleLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -75)
         ])
     }
     
     func guideLabelConfigure() {
-        self.outerStackView.addArrangedSubview(self.guideLabel)
-        self.guideLabel.translatesAutoresizingMaskIntoConstraints = false
+        outerStackView.addArrangedSubview(guideLabel)
+        guideLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            self.guideLabel.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 35),
-            self.guideLabel.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -35)
+            guideLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 35),
+            guideLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -35)
         ])
     }
     
     func completeButtonConfigure() {
-        self.outerStackView.addArrangedSubview(self.completeButton)
-        self.completeButton.translatesAutoresizingMaskIntoConstraints = false
+        outerStackView.addArrangedSubview(completeButton)
+        completeButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            self.completeButton.leadingAnchor.constraint(equalTo: self.guideLabel.leadingAnchor),
-            self.completeButton.trailingAnchor.constraint(equalTo: self.guideLabel.trailingAnchor),
-            self.completeButton.heightAnchor.constraint(equalToConstant: 40)
+            completeButton.leadingAnchor.constraint(equalTo: guideLabel.leadingAnchor),
+            completeButton.trailingAnchor.constraint(equalTo: guideLabel.trailingAnchor),
+            completeButton.heightAnchor.constraint(equalToConstant: 40)
         ])
     }
     
     func loginLabelConfigure() {
-        self.outerStackView.addArrangedSubview(self.loginLabel)
+        outerStackView.addArrangedSubview(loginLabel)
     }
 }

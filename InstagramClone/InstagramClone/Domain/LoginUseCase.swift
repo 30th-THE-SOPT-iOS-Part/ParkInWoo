@@ -31,8 +31,8 @@ final class LoginUseCase {
             return
         }
         
-        UserInfo.id = self.id
-        UserInfo.password = self.password
+        User.id = self.id
+        User.password = self.password
         loginSuccess.accept(())
     }
 }

@@ -22,7 +22,6 @@
 		8A3BF8BF28127E9E00F3D110 /* MockUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3BF8BE28127E9E00F3D110 /* MockUserInfo.swift */; };
 		8A3BF8C328128B0A00F3D110 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3BF8C228128B0A00F3D110 /* LoginViewModel.swift */; };
 		8A3BF8C62812A63B00F3D110 /* SignUpPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3BF8C52812A63B00F3D110 /* SignUpPasswordViewModel.swift */; };
-		8A3BF8C82812B00400F3D110 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3BF8C72812B00400F3D110 /* UserInfo.swift */; };
 		8A3BF8CC2812B2C200F3D110 /* SignUpIDViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3BF8CB2812B2C200F3D110 /* SignUpIDViewModel.swift */; };
 		8A3BF8CF2812DD3B00F3D110 /* Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3BF8CE2812DD3B00F3D110 /* Asset.swift */; };
 		8A8EA8672802745B004DB3EF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8A8EA8692802745B004DB3EF /* Localizable.strings */; };
@@ -51,7 +50,6 @@
 		8A3BF8BE28127E9E00F3D110 /* MockUserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUserInfo.swift; sourceTree = "<group>"; };
 		8A3BF8C228128B0A00F3D110 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		8A3BF8C52812A63B00F3D110 /* SignUpPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPasswordViewModel.swift; sourceTree = "<group>"; };
-		8A3BF8C72812B00400F3D110 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		8A3BF8CB2812B2C200F3D110 /* SignUpIDViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpIDViewModel.swift; sourceTree = "<group>"; };
 		8A3BF8CE2812DD3B00F3D110 /* Asset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Asset.swift; sourceTree = "<group>"; };
 		8A8EA8682802745B004DB3EF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -148,7 +146,6 @@
 			isa = PBXGroup;
 			children = (
 				8AC6469227FE9F5C00377BB2 /* User.swift */,
-				8A3BF8C72812B00400F3D110 /* UserInfo.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -406,7 +403,6 @@
 				8A3BF8A328117D3B00F3D110 /* HomeViewController.swift in Sources */,
 				8A3BF8BF28127E9E00F3D110 /* MockUserInfo.swift in Sources */,
 				8A3BF8B428126ADF00F3D110 /* SignUpUseCase.swift in Sources */,
-				8A3BF8C82812B00400F3D110 /* UserInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -28,15 +28,15 @@ final class SignUpPasswordViewModel {
     func transform(from input: Input) -> Output {
         input.passwordDidEditEvent
             .subscribe(onNext: { password in
-                UserInfo.password = password
+                User.password = password
             })
-            .disposed(by: self.disposeBag)
+            .disposed(by: disposeBag)
         
         input.tapNext
             .subscribe(onNext: { [weak self] _ in
                 self?.signUpUseCase.execute()
             })
-            .disposed(by: self.disposeBag)
+            .disposed(by: disposeBag)
         
         return createOutput(from: input)
     }
@@ -44,15 +44,15 @@ final class SignUpPasswordViewModel {
     private func createOutput(from input: Input) -> Output {
         let output = Output()
         
-        self.signUpUseCase.signUpSuccess
+        signUpUseCase.signUpSuccess
             .subscribe(onNext: { [weak self] _ in
-                self?.loginUseCase.id = UserInfo.id
-                self?.loginUseCase.password = UserInfo.password
+                self?.loginUseCase.id = User.id
+                self?.loginUseCase.password = User.password
                 self?.loginUseCase.execute()
             })
-            .disposed(by: self.disposeBag)
+            .disposed(by: disposeBag)
         
-        self.signUpUseCase.signUpError
+        signUpUseCase.signUpError
             .subscribe(onNext: { error in
                 switch error {
                 case .passwordEmpty:
@@ -61,18 +61,18 @@ final class SignUpPasswordViewModel {
                     output.errorMessage.accept("알 수 없는 에러 : \(error)")
                 }
             })
-            .disposed(by: self.disposeBag)
+            .disposed(by: disposeBag)
         
-        self.loginUseCase.loginSuccess
+        loginUseCase.loginSuccess
             .subscribe(onNext: { _ in
                 output.goToNext.accept(true)
             })
-            .disposed(by: self.disposeBag)
+            .disposed(by: disposeBag)
         
         input.passwordDidEditEvent
             .map{ $0.count > 0 }
             .bind(to: output.enableNext)
-            .disposed(by: self.disposeBag)
+            .disposed(by: disposeBag)
         
         return output
     }

@@ -20,12 +20,12 @@ final class SignUpUseCase {
     let signUpSuccess = PublishRelay<Void>()
     
     func execute() {
-        guard let id = UserInfo.id else {
+        guard let id = User.id else {
             self.signUpError.accept(SignUpError.idEmpty)
             return
         }
         
-        guard let pw = UserInfo.password else {
+        guard let pw = User.password else {
             self.signUpError.accept(SignUpError.passwordEmpty)
             return
         }

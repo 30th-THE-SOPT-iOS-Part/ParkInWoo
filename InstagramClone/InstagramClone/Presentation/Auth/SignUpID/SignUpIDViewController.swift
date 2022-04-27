@@ -13,7 +13,7 @@ final class SignUpIDViewController: UIViewController {
     private let disposeBag = DisposeBag()
     private let viewModel = SignUpIDViewModel()
     
-    private lazy var defaultScrollView = UIScrollView()
+    private var defaultScrollView = UIScrollView()
     
     private lazy var backButton: UIButton = {
         let button = UIButton()
@@ -64,96 +64,96 @@ final class SignUpIDViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.configure()
-        self.bindViewModel()
+        configure()
+        bindViewModel()
     }
     
     @objc private func backDidTouch() {
-        self.navigationController?.popViewController(animated: true)
+        navigationController?.popViewController(animated: true)
     }    
 }
 
 private extension SignUpIDViewController {
     func configure() {
-        self.view.backgroundColor = .white
-        self.navigationController?.isNavigationBarHidden = true
-        self.defaultScrollViewConfigure()
-        self.backButtonConfigure()
-        self.titleLabelConfigure()
-        self.guideLabelConfigure()
-        self.nameTextFieldConfigure()
-        self.nextButtonConfigure()
+        view.backgroundColor = .white
+        navigationController?.isNavigationBarHidden = true
+        defaultScrollViewConfigure()
+        backButtonConfigure()
+        titleLabelConfigure()
+        guideLabelConfigure()
+        nameTextFieldConfigure()
+        nextButtonConfigure()
     }
     
     func defaultScrollViewConfigure() {
-        self.view.addSubview(self.defaultScrollView)
-        self.defaultScrollView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(defaultScrollView)
+        defaultScrollView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            self.defaultScrollView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
-            self.defaultScrollView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor),
-            self.defaultScrollView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor),
-            self.defaultScrollView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor)
+            defaultScrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            defaultScrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            defaultScrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            defaultScrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
     
     func backButtonConfigure() {
-        self.defaultScrollView.addSubview(self.backButton)
-        self.backButton.translatesAutoresizingMaskIntoConstraints = false
+        defaultScrollView.addSubview(backButton)
+        backButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            self.backButton.topAnchor.constraint(equalTo: self.defaultScrollView.topAnchor, constant: 14),
-            self.backButton.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 10)
+            backButton.topAnchor.constraint(equalTo: defaultScrollView.topAnchor, constant: 14),
+            backButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10)
         ])
     }
     
     func titleLabelConfigure() {
-        self.defaultScrollView.addSubview(self.titleLabel)
-        self.titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        defaultScrollView.addSubview(titleLabel)
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            self.titleLabel.topAnchor.constraint(equalTo: self.backButton.bottomAnchor, constant: 10),
-            self.titleLabel.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerXAnchor)
+            titleLabel.topAnchor.constraint(equalTo: backButton.bottomAnchor, constant: 10),
+            titleLabel.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor)
         ])
     }
     
     func guideLabelConfigure() {
-        self.defaultScrollView.addSubview(self.guideLabel)
-        self.guideLabel.translatesAutoresizingMaskIntoConstraints = false
+        defaultScrollView.addSubview(guideLabel)
+        guideLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            self.guideLabel.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: 19),
-            self.guideLabel.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 80),
-            self.guideLabel.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -80)
+            guideLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 19),
+            guideLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 80),
+            guideLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -80)
         ])
     }
     
     func nameTextFieldConfigure() {
-        self.defaultScrollView.addSubview(self.inputTextField)
-        self.inputTextField.translatesAutoresizingMaskIntoConstraints = false
+        defaultScrollView.addSubview(inputTextField)
+        inputTextField.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            self.inputTextField.topAnchor.constraint(equalTo: self.guideLabel.bottomAnchor, constant: 19),
-            self.inputTextField.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
-            self.inputTextField.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
-            self.inputTextField.heightAnchor.constraint(equalToConstant: 44)
+            inputTextField.topAnchor.constraint(equalTo: guideLabel.bottomAnchor, constant: 19),
+            inputTextField.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            inputTextField.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            inputTextField.heightAnchor.constraint(equalToConstant: 44)
         ])
     }
     
     func nextButtonConfigure() {
-        self.defaultScrollView.addSubview(self.nextButton)
-        self.nextButton.translatesAutoresizingMaskIntoConstraints = false
+        defaultScrollView.addSubview(nextButton)
+        nextButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            self.nextButton.topAnchor.constraint(equalTo: self.inputTextField.bottomAnchor, constant: 22),
-            self.nextButton.leadingAnchor.constraint(equalTo: self.inputTextField.leadingAnchor),
-            self.nextButton.trailingAnchor.constraint(equalTo: self.inputTextField.trailingAnchor),
-            self.nextButton.bottomAnchor.constraint(equalTo: self.defaultScrollView.bottomAnchor),
-            self.nextButton.heightAnchor.constraint(equalToConstant: 44)
+            nextButton.topAnchor.constraint(equalTo: inputTextField.bottomAnchor, constant: 22),
+            nextButton.leadingAnchor.constraint(equalTo: inputTextField.leadingAnchor),
+            nextButton.trailingAnchor.constraint(equalTo: inputTextField.trailingAnchor),
+            nextButton.bottomAnchor.constraint(equalTo: defaultScrollView.bottomAnchor),
+            nextButton.heightAnchor.constraint(equalToConstant: 44)
         ])
     }
     
     func bindViewModel() {
         let input = SignUpIDViewModel.Input(
-            idDidEditEvent: self.inputTextField.rx.text.orEmpty.asObservable(),
-            tapNext: self.nextButton.rx.tap.asObservable()
+            idDidEditEvent: inputTextField.rx.text.orEmpty.asObservable(),
+            tapNext: nextButton.rx.tap.asObservable()
         )
         
-        let output = self.viewModel.transform(from: input)
+        let output = viewModel.transform(from: input)
         
         output.enableNext
             .asDriver(onErrorJustReturn: false)
@@ -162,17 +162,17 @@ private extension SignUpIDViewController {
                 self?.nextButton.isUserInteractionEnabled = result
                 self?.nextButton.alpha = result ? 1 : 0.5
             })
-            .disposed(by: self.disposeBag)
+            .disposed(by: disposeBag)
         
         output.goToNext
             .asDriver(onErrorJustReturn: false)
             .drive(onNext: { [weak self] result in
                 if !result { return }
-                UserInfo.id = self?.inputTextField.text
+                User.id = self?.inputTextField.text
                 let signUpSecondViewController = SignUpPasswordViewController()
                 self?.navigationController?.pushViewController(signUpSecondViewController, animated: true)
             })
-            .disposed(by: self.disposeBag)
+            .disposed(by: disposeBag)
         
         output.errorMessage
             .asDriver(onErrorJustReturn: "")
@@ -180,6 +180,6 @@ private extension SignUpIDViewController {
                 // TODO: 에러처리
                 print(error)
             })
-            .disposed(by: self.disposeBag)
+            .disposed(by: disposeBag)
     }
 }

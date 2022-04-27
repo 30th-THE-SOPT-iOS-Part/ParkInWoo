@@ -13,7 +13,7 @@ final class LoginViewController: UIViewController {
     private let disposeBag = DisposeBag()
     private let viewModel = LoginViewModel()
     
-    private lazy var defaultScrollView = UIScrollView()
+    private var defaultScrollView = UIScrollView()
     
     private lazy var logoImageView: UIImageView  = {
         let imageView = UIImageView()
@@ -40,7 +40,7 @@ final class LoginViewController: UIViewController {
         textField.layer.cornerRadius = 3
         textField.backgroundColor = .systemGray6
         textField.isSecureTextEntry = true
-        textField.rightView = self.toggleShowHideButton
+        textField.rightView = toggleShowHideButton
         textField.rightViewMode = .always
         return textField
     }()
@@ -77,8 +77,8 @@ final class LoginViewController: UIViewController {
     private lazy var labelOuterStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
-        stackView.addArrangedSubview(self.noAccountLabel)
-        stackView.addArrangedSubview(self.signUpLabel)
+        stackView.addArrangedSubview(noAccountLabel)
+        stackView.addArrangedSubview(signUpLabel)
         stackView.spacing = 3
         return stackView
     }()
@@ -104,117 +104,117 @@ final class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.configureUI()
-        self.bindViewModel()
+        configureUI()
+        bindViewModel()
     }
     
     @objc private func showHideDidTouch() {
-        self.pwTextField.isSecureTextEntry.toggle()
-        if self.pwTextField.isSecureTextEntry {
-            self.toggleShowHideButton.setImage(Asset.Login.hiddenEye, for: .normal)
+        pwTextField.isSecureTextEntry.toggle()
+        if pwTextField.isSecureTextEntry {
+            toggleShowHideButton.setImage(Asset.Login.hiddenEye, for: .normal)
         } else {
-            self.toggleShowHideButton.setImage(Asset.Login.shownEye, for: .normal)
+            toggleShowHideButton.setImage(Asset.Login.shownEye, for: .normal)
         }
     }
     
     @objc private func signUpDidTouch() {
         let signUpViewController = SignUpIDViewController()
-        self.navigationController?.pushViewController(signUpViewController, animated: true)
+        navigationController?.pushViewController(signUpViewController, animated: true)
     }
 }
 
 private extension LoginViewController {
     func configureUI() {
-        self.view.backgroundColor = .white
-        self.defaultScrollViewConfigure()
-        self.logoImageViewConfigure()
-        self.idTextFieldConfigure()
-        self.pwTextFieldConfigure()
-        self.pwForgotLabelCongifugure()
-        self.loginButtonCongifugure()
-        self.labelOuterStackViewCongifugure()
+        view.backgroundColor = .white
+        defaultScrollViewConfigure()
+        logoImageViewConfigure()
+        idTextFieldConfigure()
+        pwTextFieldConfigure()
+        pwForgotLabelCongifugure()
+        loginButtonCongifugure()
+        labelOuterStackViewCongifugure()
     }
     
     func defaultScrollViewConfigure() {
-        self.view.addSubview(self.defaultScrollView)
-        self.defaultScrollView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(defaultScrollView)
+        defaultScrollView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            self.defaultScrollView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
-            self.defaultScrollView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor),
-            self.defaultScrollView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor),
-            self.defaultScrollView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor)
+            defaultScrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            defaultScrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            defaultScrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            defaultScrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
     
     func logoImageViewConfigure() {
-        self.defaultScrollView.addSubview(self.logoImageView)
-        self.logoImageView.translatesAutoresizingMaskIntoConstraints = false
+        defaultScrollView.addSubview(logoImageView)
+        logoImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            self.logoImageView.topAnchor.constraint(equalTo: self.defaultScrollView.topAnchor, constant: 170),
-            self.logoImageView.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerXAnchor)
+            logoImageView.topAnchor.constraint(equalTo: defaultScrollView.topAnchor, constant: 170),
+            logoImageView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor)
         ])
     }
     
     func idTextFieldConfigure() {
-        self.defaultScrollView.addSubview(self.idTextField)
-        self.idTextField.translatesAutoresizingMaskIntoConstraints = false
+        defaultScrollView.addSubview(idTextField)
+        idTextField.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            self.idTextField.topAnchor.constraint(equalTo: self.logoImageView.bottomAnchor, constant: 33),
-            self.idTextField.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
-            self.idTextField.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
-            self.idTextField.heightAnchor.constraint(equalToConstant: 44)
+            idTextField.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 33),
+            idTextField.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            idTextField.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            idTextField.heightAnchor.constraint(equalToConstant: 44)
         ])
     }
     
     func pwTextFieldConfigure() {
-        self.defaultScrollView.addSubview(self.pwTextField)
-        self.pwTextField.translatesAutoresizingMaskIntoConstraints = false
+        defaultScrollView.addSubview(pwTextField)
+        pwTextField.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            self.pwTextField.topAnchor.constraint(equalTo: self.idTextField.bottomAnchor, constant: 16),
-            self.pwTextField.leadingAnchor.constraint(equalTo: self.idTextField.leadingAnchor),
-            self.pwTextField.trailingAnchor.constraint(equalTo: self.idTextField.trailingAnchor),
-            self.pwTextField.heightAnchor.constraint(equalToConstant: 44)
+            pwTextField.topAnchor.constraint(equalTo: idTextField.bottomAnchor, constant: 16),
+            pwTextField.leadingAnchor.constraint(equalTo: idTextField.leadingAnchor),
+            pwTextField.trailingAnchor.constraint(equalTo: idTextField.trailingAnchor),
+            pwTextField.heightAnchor.constraint(equalToConstant: 44)
         ])
     }
     
     func pwForgotLabelCongifugure() {
-        self.defaultScrollView.addSubview(self.pwForgotLabel)
-        self.pwForgotLabel.translatesAutoresizingMaskIntoConstraints = false
+        defaultScrollView.addSubview(pwForgotLabel)
+        pwForgotLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            self.pwForgotLabel.topAnchor.constraint(equalTo: self.pwTextField.bottomAnchor, constant: 15),
-            self.pwForgotLabel.leadingAnchor.constraint(equalTo: self.pwTextField.leadingAnchor)
+            pwForgotLabel.topAnchor.constraint(equalTo: pwTextField.bottomAnchor, constant: 15),
+            pwForgotLabel.leadingAnchor.constraint(equalTo: pwTextField.leadingAnchor)
         ])
     }
     
     func loginButtonCongifugure() {
-        self.defaultScrollView.addSubview(self.loginButton)
-        self.loginButton.translatesAutoresizingMaskIntoConstraints = false
+        defaultScrollView.addSubview(loginButton)
+        loginButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            self.loginButton.topAnchor.constraint(equalTo: self.pwForgotLabel.bottomAnchor, constant: 34),
-            self.loginButton.leadingAnchor.constraint(equalTo: self.pwTextField.leadingAnchor),
-            self.loginButton.trailingAnchor.constraint(equalTo: self.pwTextField.trailingAnchor),
-            self.loginButton.heightAnchor.constraint(equalToConstant: 44)
+            loginButton.topAnchor.constraint(equalTo: pwForgotLabel.bottomAnchor, constant: 34),
+            loginButton.leadingAnchor.constraint(equalTo: pwTextField.leadingAnchor),
+            loginButton.trailingAnchor.constraint(equalTo: pwTextField.trailingAnchor),
+            loginButton.heightAnchor.constraint(equalToConstant: 44)
         ])
     }
     
     func labelOuterStackViewCongifugure() {
-        self.defaultScrollView.addSubview(self.labelOuterStackView)
-        self.labelOuterStackView.translatesAutoresizingMaskIntoConstraints = false
+        defaultScrollView.addSubview(labelOuterStackView)
+        labelOuterStackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            self.labelOuterStackView.topAnchor.constraint(equalTo: self.loginButton.bottomAnchor, constant: 34),
-            self.labelOuterStackView.centerXAnchor.constraint(equalTo: self.defaultScrollView.centerXAnchor),
-            self.labelOuterStackView.bottomAnchor.constraint(equalTo: self.defaultScrollView.bottomAnchor)
+            labelOuterStackView.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 34),
+            labelOuterStackView.centerXAnchor.constraint(equalTo: defaultScrollView.centerXAnchor),
+            labelOuterStackView.bottomAnchor.constraint(equalTo: defaultScrollView.bottomAnchor)
         ])
     }
     
     func bindViewModel() {
         let input = LoginViewModel.Input(
-            idDidEditEvent: self.idTextField.rx.text.orEmpty.asObservable(),
-            passwordDidEditEvent: self.pwTextField.rx.text.orEmpty.asObservable(),
-            tapLogin: self.loginButton.rx.tap.asObservable()
+            idDidEditEvent: idTextField.rx.text.orEmpty.asObservable(),
+            passwordDidEditEvent: pwTextField.rx.text.orEmpty.asObservable(),
+            tapLogin: loginButton.rx.tap.asObservable()
         )
         
-        let output = self.viewModel.transform(from: input)
+        let output = viewModel.transform(from: input)
         
         output.enableLogin
             .asDriver(onErrorJustReturn: false)
@@ -223,7 +223,7 @@ private extension LoginViewController {
                 self?.loginButton.isUserInteractionEnabled = result
                 self?.loginButton.alpha = result ? 1 : 0.5
             })
-            .disposed(by: self.disposeBag)
+            .disposed(by: disposeBag)
         
         output.goToMain
             .asDriver(onErrorJustReturn: false)
@@ -236,7 +236,7 @@ private extension LoginViewController {
                     self?.pwTextField.text = nil
                 }
             })
-            .disposed(by: self.disposeBag)
+            .disposed(by: disposeBag)
         
         output.errorMessage
             .asDriver(onErrorJustReturn: "")
@@ -244,6 +244,6 @@ private extension LoginViewController {
                 // TODO: 에러처리
                 print(error)
             })
-            .disposed(by: self.disposeBag)
+            .disposed(by: disposeBag)
     }
 }

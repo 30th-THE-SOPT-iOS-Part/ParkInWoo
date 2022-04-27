@@ -61,11 +61,11 @@ final class TabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.delegate = self
-        self.tabBar.tintColor = .black
-        self.tabBar.unselectedItemTintColor = .black
-        self.tabBar.backgroundColor = .white
-        self.viewControllers = [homeViewController, searchViewController, reelsViewController, shopViewController, profileViewController]
+        delegate = self
+        tabBar.tintColor = .black
+        tabBar.unselectedItemTintColor = .black
+        tabBar.backgroundColor = .white
+        viewControllers = [homeViewController, searchViewController, reelsViewController, shopViewController, profileViewController]
     }
     
 }
@@ -73,13 +73,13 @@ final class TabBarController: UITabBarController {
 extension TabBarController: UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         if viewController is ReelsViewController {
-            self.tabBar.tintColor = .white
-            self.tabBar.unselectedItemTintColor = .white
-            self.tabBar.backgroundColor = .black
+            tabBar.tintColor = .white
+            tabBar.unselectedItemTintColor = .white
+            tabBar.backgroundColor = .black
         } else {
-            self.tabBar.tintColor = .black
-            self.tabBar.unselectedItemTintColor = .black
-            self.tabBar.backgroundColor = .white
+            tabBar.tintColor = .black
+            tabBar.unselectedItemTintColor = .black
+            tabBar.backgroundColor = .white
         }
     }
 }
