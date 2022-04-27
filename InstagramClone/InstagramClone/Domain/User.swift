@@ -7,10 +7,7 @@
 
 import Foundation
 
-class User {
-    static var shared: User = User()
-    private init() {}
-    
+struct User {        
     var id: String?
     var pw: String?
 }
