@@ -30,19 +30,19 @@ final class LoginViewModel {
             .subscribe(onNext: { [weak self] id in
                 self?.loginUseCase.id = id
             })
-            .disposed(by: self.disposeBag)
+            .disposed(by: disposeBag)
         
         input.passwordDidEditEvent
             .subscribe(onNext: { [weak self] password in
                 self?.loginUseCase.password = password
             })
-            .disposed(by: self.disposeBag)
+            .disposed(by: disposeBag)
         
         input.tapLogin
             .subscribe(onNext: { [weak self] _ in
                 self?.loginUseCase.execute()
             })
-            .disposed(by: self.disposeBag)
+            .disposed(by: disposeBag)
         
         return createOutput(from: input)
     }
@@ -50,13 +50,13 @@ final class LoginViewModel {
     private func createOutput(from input: Input) -> Output {
         let output = Output()
         
-        self.loginUseCase.loginSuccess
+        loginUseCase.loginSuccess
             .subscribe(onNext: { _ in
                 output.goToMain.accept(true)
             })
-            .disposed(by: self.disposeBag)
+            .disposed(by: disposeBag)
         
-        self.loginUseCase.loginError
+        loginUseCase.loginError
             .subscribe(onNext: { error in
                 switch error {
                 case .idNotMatch:
@@ -65,12 +65,12 @@ final class LoginViewModel {
                     output.errorMessage.accept("비밀번호가 일치하지 않습니다.")
                 }
             })
-            .disposed(by: self.disposeBag)
+            .disposed(by: disposeBag)
         
         Observable.combineLatest(input.idDidEditEvent, input.passwordDidEditEvent)
                     .map{ !$0.0.isEmpty && !$0.1.isEmpty }
                     .bind(to: output.enableLogin)
-                    .disposed(by: self.disposeBag)
+                    .disposed(by: disposeBag)
         
         return output
     }

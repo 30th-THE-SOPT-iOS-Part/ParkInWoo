@@ -27,9 +27,9 @@ final class SignUpIDViewModel {
     func transform(from input: Input) -> Output {
         input.idDidEditEvent
             .subscribe(onNext: { id in
-                UserInfo.password = id
+                User.password = id
             })
-            .disposed(by: self.disposeBag)
+            .disposed(by: disposeBag)
         
         return createOutput(from: input)
     }
@@ -37,7 +37,7 @@ final class SignUpIDViewModel {
     private func createOutput(from input: Input) -> Output {
         let output = Output()
         
-        self.signUpUseCase.signUpError
+        signUpUseCase.signUpError
             .subscribe(onNext: { error in
                 switch error {
                 case .idEmpty:
@@ -48,18 +48,18 @@ final class SignUpIDViewModel {
                     output.errorMessage.accept("알 수 없는 에러 : \(error)")
                 }
             })
-            .disposed(by: self.disposeBag)
+            .disposed(by: disposeBag)
         
         input.idDidEditEvent
             .map{ $0.count > 0 }
             .bind(to: output.enableNext)
-            .disposed(by: self.disposeBag)
+            .disposed(by: disposeBag)
         
         input.tapNext
             .subscribe(onNext: { _ in
                 output.goToNext.accept(true)
             })
-            .disposed(by: self.disposeBag)
+            .disposed(by: disposeBag)
         
         return output
     }

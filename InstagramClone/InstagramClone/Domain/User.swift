@@ -7,7 +7,9 @@
 
 import Foundation
 
-struct User {        
+struct User {
+    static var id: String?
+    static var password: String?
     var id: String?
     var pw: String?
 }
