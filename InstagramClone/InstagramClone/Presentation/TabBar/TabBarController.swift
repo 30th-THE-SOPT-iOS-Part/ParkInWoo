@@ -65,7 +65,7 @@ final class TabBarController: UITabBarController {
         tabBar.tintColor = .black
         tabBar.unselectedItemTintColor = .black
         tabBar.backgroundColor = .white
-        viewControllers = [homeViewController, searchViewController, reelsViewController, shopViewController, profileViewController]
+        viewControllers = [UINavigationController(rootViewController: homeViewController), searchViewController, reelsViewController, shopViewController, profileViewController]
     }
     
 }
