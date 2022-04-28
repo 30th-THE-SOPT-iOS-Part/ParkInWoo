@@ -13,7 +13,7 @@ final class SignUpIDViewController: UIViewController {
     private let disposeBag = DisposeBag()
     private let viewModel = SignUpIDViewModel()
     
-    private var defaultScrollView = UIScrollView()
+    private let defaultScrollView = UIScrollView()
     
     private lazy var backButton: UIButton = {
         let button = UIButton()

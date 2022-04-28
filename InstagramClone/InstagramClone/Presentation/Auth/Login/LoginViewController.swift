@@ -13,7 +13,7 @@ final class LoginViewController: UIViewController {
     private let disposeBag = DisposeBag()
     private let viewModel = LoginViewModel()
     
-    private var defaultScrollView = UIScrollView()
+    private let defaultScrollView = UIScrollView()
     
     private lazy var logoImageView: UIImageView  = {
         let imageView = UIImageView()
