@@ -33,7 +33,7 @@ final class StoryCollectionViewCell: UICollectionViewCell {
         self.contentView.addSubview(imageView)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            imageView.topAnchor.constraint(equalTo: self.topAnchor),
+            imageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 5),
             imageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 5),
             imageView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -5),
             imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor)

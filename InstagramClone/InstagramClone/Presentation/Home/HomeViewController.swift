@@ -50,7 +50,6 @@ final class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
-        bindViewModel()
     }
 
 }
@@ -106,10 +105,6 @@ private extension HomeViewController {
             postTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
-    
-    func bindViewModel() {
-        
-    }
 }
 
 extension HomeViewController: UICollectionViewDataSource {
@@ -126,7 +121,7 @@ extension HomeViewController: UICollectionViewDataSource {
 
 extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        3
+        return 10
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
