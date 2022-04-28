@@ -30,20 +30,20 @@ final class StoryCollectionViewCell: UICollectionViewCell {
     }
     
     private func configure() {
-        self.contentView.addSubview(imageView)
+        contentView.addSubview(imageView)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            imageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 5),
-            imageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 5),
-            imageView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -5),
+            imageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5),
+            imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 5),
+            imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -5),
             imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor)
         ])
         
-        self.contentView.addSubview(label)
+        contentView.addSubview(label)
         label.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             label.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 2),
-            label.centerXAnchor.constraint(equalTo: self.centerXAnchor)
+            label.centerXAnchor.constraint(equalTo: contentView.centerXAnchor)
         ])
     }
     

@@ -42,6 +42,7 @@ final class HomeViewController: UIViewController {
         tableView.register(PostTableViewCell.self, forCellReuseIdentifier: PostTableViewCell.identifier)
         tableView.rowHeight = UITableView.automaticDimension
         tableView.separatorStyle = .none
+        tableView.allowsSelection = false
         tableView.estimatedRowHeight = 400
         tableView.dataSource = self
         return tableView

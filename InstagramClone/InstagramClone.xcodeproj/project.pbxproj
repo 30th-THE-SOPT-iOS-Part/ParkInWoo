@@ -26,6 +26,7 @@
 		8A3BF8CF2812DD3B00F3D110 /* Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3BF8CE2812DD3B00F3D110 /* Asset.swift */; };
 		8A65EA37281AF83C00900A2A /* StoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A65EA36281AF83C00900A2A /* StoryCollectionViewCell.swift */; };
 		8A65EA39281AF86700900A2A /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A65EA38281AF86600900A2A /* PostTableViewCell.swift */; };
+		8A65EA3B281B354C00900A2A /* ToggleImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A65EA3A281B354C00900A2A /* ToggleImageView.swift */; };
 		8A8EA8672802745B004DB3EF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8A8EA8692802745B004DB3EF /* Localizable.strings */; };
 		8AC6466B27FD547A00377BB2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC6466A27FD547A00377BB2 /* AppDelegate.swift */; };
 		8AC6466D27FD547A00377BB2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC6466C27FD547A00377BB2 /* SceneDelegate.swift */; };
@@ -56,6 +57,7 @@
 		8A3BF8CE2812DD3B00F3D110 /* Asset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Asset.swift; sourceTree = "<group>"; };
 		8A65EA36281AF83C00900A2A /* StoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		8A65EA38281AF86600900A2A /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
+		8A65EA3A281B354C00900A2A /* ToggleImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleImageView.swift; sourceTree = "<group>"; };
 		8A8EA8682802745B004DB3EF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8A8EA86A280274C4004DB3EF /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8A8EA86B280274F5004DB3EF /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				8AC6468C27FD65F900377BB2 /* PadedTextField.swift */,
+				8A65EA3A281B354C00900A2A /* ToggleImageView.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -392,6 +395,7 @@
 				8A3BF8B228126AD000F3D110 /* LoginUseCase.swift in Sources */,
 				8A3BF8A928117D8500F3D110 /* ShopViewController.swift in Sources */,
 				8AC6468A27FD57FF00377BB2 /* WelcomeViewController.swift in Sources */,
+				8A65EA3B281B354C00900A2A /* ToggleImageView.swift in Sources */,
 				8A3BF8CF2812DD3B00F3D110 /* Asset.swift in Sources */,
 				8A3BF8A728117D7D00F3D110 /* ReelsViewController.swift in Sources */,
 				8A3BF8AB28117D8D00F3D110 /* ProfileViewController.swift in Sources */,
