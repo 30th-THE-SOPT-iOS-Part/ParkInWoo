@@ -39,6 +39,11 @@ final class HomeViewController: UIViewController {
     
     private lazy var postTableView: UITableView = {
         let tableView = UITableView()
+        tableView.register(PostTableViewCell.self, forCellReuseIdentifier: PostTableViewCell.identifier)
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.separatorStyle = .none
+        tableView.estimatedRowHeight = 400
+        tableView.dataSource = self
         return tableView
     }()
 
@@ -57,7 +62,7 @@ private extension HomeViewController {
         configureLogoImageView()
         configureButtonStackView()
         configureStoryCollectionView()
-//        configurePostTableView()
+        configurePostTableView()
     }
     
     func configureLogoImageView() {
@@ -93,6 +98,13 @@ private extension HomeViewController {
     
     func configurePostTableView() {
         view.addSubview(postTableView)
+        postTableView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            postTableView.topAnchor.constraint(equalTo: storyCollectionView.bottomAnchor, constant: 11),
+            postTableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            postTableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            postTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+        ])
     }
     
     func bindViewModel() {
@@ -107,7 +119,18 @@ extension HomeViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StoryCollectionViewCell.identifier, for: indexPath) as? StoryCollectionViewCell else { return UICollectionViewCell() }
-        cell.set(idx: indexPath.item % 6)
+        cell.configure(idx: indexPath.item % 6)
+        return cell
+    }
+}
+
+extension HomeViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        3
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.identifier, for: indexPath) as? PostTableViewCell else { return UITableViewCell() }
         return cell
     }
 }

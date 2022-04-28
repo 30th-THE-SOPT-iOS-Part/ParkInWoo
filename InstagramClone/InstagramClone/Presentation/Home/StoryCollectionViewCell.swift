@@ -30,7 +30,7 @@ final class StoryCollectionViewCell: UICollectionViewCell {
     }
     
     private func configure() {
-        self.addSubview(imageView)
+        self.contentView.addSubview(imageView)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             imageView.topAnchor.constraint(equalTo: self.topAnchor),
@@ -39,7 +39,7 @@ final class StoryCollectionViewCell: UICollectionViewCell {
             imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor)
         ])
         
-        self.addSubview(label)
+        self.contentView.addSubview(label)
         label.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             label.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 2),
@@ -47,7 +47,7 @@ final class StoryCollectionViewCell: UICollectionViewCell {
         ])
     }
     
-    func set(idx: Int) {
+    func configure(idx: Int) {
         imageView.image = UIImage(named: "avatar\(idx+1)")
         label.text = "\(idx+1)"
     }
