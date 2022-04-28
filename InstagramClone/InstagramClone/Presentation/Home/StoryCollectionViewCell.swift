@@ -48,8 +48,9 @@ final class StoryCollectionViewCell: UICollectionViewCell {
     }
     
     func configure(idx: Int) {
-        imageView.image = UIImage(named: "avatar\(idx+1)")
-        label.text = "\(idx+1)"
+        let idx = idx % 6 + 1
+        imageView.image = UIImage(named: "avatar\(idx)")
+        label.text = "\(idx)"
     }
     
 }

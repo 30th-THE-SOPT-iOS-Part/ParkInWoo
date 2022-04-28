@@ -25,18 +25,6 @@ final class HomeViewController: UIViewController {
         return stackView
     }()
     
-    private lazy var storyCollectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: 58, height: 72)
-        layout.minimumLineSpacing = 4
-        layout.scrollDirection = .horizontal
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.register(StoryCollectionViewCell.self, forCellWithReuseIdentifier: StoryCollectionViewCell.identifier)
-        collectionView.dataSource = self
-        collectionView.showsHorizontalScrollIndicator = false
-        return collectionView
-    }()
-    
     private lazy var postTableView: UITableView = {
         let tableView = UITableView()
         tableView.register(PostTableViewCell.self, forCellReuseIdentifier: PostTableViewCell.identifier)
@@ -61,7 +49,6 @@ private extension HomeViewController {
         navigationController?.isNavigationBarHidden = true
         configureLogoImageView()
         configureButtonStackView()
-        configureStoryCollectionView()
         configurePostTableView()
     }
     
@@ -85,38 +72,15 @@ private extension HomeViewController {
         ])
     }
     
-    func configureStoryCollectionView() {
-        view.addSubview(storyCollectionView)
-        storyCollectionView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            storyCollectionView.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 12),
-            storyCollectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 6),
-            storyCollectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -6),
-            storyCollectionView.heightAnchor.constraint(equalToConstant: 72)
-        ])
-    }
-    
     func configurePostTableView() {
         view.addSubview(postTableView)
         postTableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            postTableView.topAnchor.constraint(equalTo: storyCollectionView.bottomAnchor, constant: 11),
+            postTableView.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 11),
             postTableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             postTableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             postTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
-    }
-}
-
-extension HomeViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StoryCollectionViewCell.identifier, for: indexPath) as? StoryCollectionViewCell else { return UICollectionViewCell() }
-        cell.configure(idx: indexPath.item % 6)
-        return cell
     }
 }
 
@@ -126,6 +90,9 @@ extension HomeViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.item == 0 {
+            return StoryTableViewCell()
+        }
         guard let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.identifier, for: indexPath) as? PostTableViewCell else { return UITableViewCell() }
         return cell
     }
