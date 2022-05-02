@@ -101,6 +101,16 @@ final class PostTableViewCell: UITableViewCell {
         configure()
     }
     
+    func configure(from post: Post) {
+        profileImageView.image = UIImage(named: post.profileImageName)
+        nameLabel.text = post.name
+        mainImageView.image = UIImage(named: post.mainImageName)
+        nameBottomLabel.text = post.name
+        contentLabel.text = post.content
+        likeLabel.text = "좋아요 \(post.likeCount)개"
+        commentLabel.text = "댓글 \(post.commentCount)개 모두 보기"
+    }
+    
     @objc private func likeDidTouch() {
         likeImageView.image = likeImageView.state ? UIImage(named: "icn_unlike") : UIImage(named: "icn_like")
         likeImageView.state.toggle()
@@ -159,8 +169,7 @@ private extension PostTableViewCell {
         NSLayoutConstraint.activate([
             mainImageView.topAnchor.constraint(equalTo: profileImageView.bottomAnchor, constant: 12),
             mainImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            mainImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            mainImageView.heightAnchor.constraint(equalTo: mainImageView.widthAnchor)
+            mainImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
         ])
     }
     

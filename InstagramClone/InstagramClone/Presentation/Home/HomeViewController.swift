@@ -7,7 +7,11 @@
 
 import UIKit
 
+import RxSwift
+import RxCocoa
+
 final class HomeViewController: UIViewController {
+    private let disposeBag = DisposeBag()
     
     private lazy var logoImageView: UIImageView  = {
         let imageView = UIImageView()
@@ -30,15 +34,16 @@ final class HomeViewController: UIViewController {
         tableView.register(PostTableViewCell.self, forCellReuseIdentifier: PostTableViewCell.identifier)
         tableView.rowHeight = UITableView.automaticDimension
         tableView.separatorStyle = .none
-        tableView.allowsSelection = false
+//        tableView.allowsSelection = false
         tableView.estimatedRowHeight = 400
-        tableView.dataSource = self
+//        tableView.dataSource = self
         return tableView
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
+        bind()
     }
 
 }
@@ -82,18 +87,24 @@ private extension HomeViewController {
             postTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
-}
-
-extension HomeViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
-    }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.item == 0 {
-            return StoryTableViewCell()
-        }
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.identifier, for: indexPath) as? PostTableViewCell else { return UITableViewCell() }
-        return cell
+    func bind() {
+        Observable.of(Post.sample)
+            .bind(to: postTableView.rx.items) { (tableView, row, element) in
+                if row == 0 { return StoryTableViewCell() }
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.identifier) as? PostTableViewCell,
+                    let post = element else {
+                    return UITableViewCell()
+                }
+                cell.configure(from: post)
+                return cell
+            }
+            .disposed(by: disposeBag)
+        
+        postTableView.rx.modelSelected(Post.self)
+                .subscribe(onNext: { item in
+                    print(item)
+                })
+                .disposed(by: disposeBag)
     }
 }
