@@ -12,26 +12,26 @@ final class PostTableViewCell: UITableViewCell {
     static let identifier = "StoryCollectionViewCell"
     var likeButtonAction : (() -> ())?
 
-    private lazy var profileImageView: UIImageView = {
+    private let profileImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "avatar1")
         return imageView
     }()
     
-    private lazy var nameLabel: UILabel = {
+    private let nameLabel: UILabel = {
         let label = UILabel()
         label.text = "name"
         label.font = .systemFont(ofSize: 12)
         return label
     }()
     
-    private lazy var moreImageView: UIImageView = {
+    private let moreImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "icn_more")
         return imageView
     }()
     
-    private lazy var mainImageView: UIImageView = {
+    private let mainImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "postImage1")
         return imageView
@@ -56,34 +56,34 @@ final class PostTableViewCell: UITableViewCell {
         return imageView
     }()
     
-    private lazy var bookMarkImageView: UIImageView = {
+    private let bookMarkImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "icn_bookmark")
         return imageView
     }()
     
-    private lazy var likeLabel: UILabel = {
+    private let likeLabel: UILabel = {
         let label = UILabel()
         label.text = "좋아요 ?개"
         label.font = .boldSystemFont(ofSize: 10)
         return label
     }()
     
-    private lazy var nameBottomLabel: UILabel = {
+    private let nameBottomLabel: UILabel = {
         let label = UILabel()
         label.text = "name"
         label.font = .systemFont(ofSize: 12)
         return label
     }()
     
-    private lazy var contentLabel: UILabel = {
+    private let contentLabel: UILabel = {
         let label = UILabel()
         label.text = "내용들어감"
         label.font = .systemFont(ofSize: 10)
         return label
     }()
     
-    private lazy var commentLabel: UILabel = {
+    private let commentLabel: UILabel = {
         let label = UILabel()
         label.text = "댓글 ?개 모두 보기"
         label.font = .systemFont(ofSize: 10)

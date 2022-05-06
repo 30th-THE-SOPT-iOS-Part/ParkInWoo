@@ -9,17 +9,19 @@ import UIKit
 
 import RxSwift
 import RxCocoa
+import RxRelay
 
 final class HomeViewController: UIViewController {
     private let disposeBag = DisposeBag()
+    private let tableData = BehaviorRelay(value: [nil] + Post.sample)
     
-    private lazy var logoImageView: UIImageView  = {
+    private let logoImageView: UIImageView  = {
         let imageView = UIImageView()
         imageView.image = Asset.Common.logo
         return imageView
     }()
     
-    private lazy var buttonStackView: UIStackView = {
+    private let buttonStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.addArrangedSubview(UIImageView(image: UIImage(named: "icn_add")))
@@ -29,14 +31,13 @@ final class HomeViewController: UIViewController {
         return stackView
     }()
     
-    private lazy var postTableView: UITableView = {
+    private let postTableView: UITableView = {
         let tableView = UITableView()
         tableView.register(PostTableViewCell.self, forCellReuseIdentifier: PostTableViewCell.identifier)
         tableView.rowHeight = UITableView.automaticDimension
         tableView.separatorStyle = .none
-//        tableView.allowsSelection = false
+        tableView.allowsSelection = false
         tableView.estimatedRowHeight = 400
-//        tableView.dataSource = self
         return tableView
     }()
 
@@ -89,7 +90,7 @@ private extension HomeViewController {
     }
     
     func bind() {
-        Observable.of(Post.sample)
+        tableData
             .bind(to: postTableView.rx.items) { (tableView, row, element) in
                 if row == 0 { return StoryTableViewCell() }
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.identifier) as? PostTableViewCell,
@@ -100,11 +101,5 @@ private extension HomeViewController {
                 return cell
             }
             .disposed(by: disposeBag)
-        
-        postTableView.rx.modelSelected(Post.self)
-                .subscribe(onNext: { item in
-                    print(item)
-                })
-                .disposed(by: disposeBag)
     }
 }

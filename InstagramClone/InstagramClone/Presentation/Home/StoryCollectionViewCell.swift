@@ -13,7 +13,7 @@ final class StoryCollectionViewCell: UICollectionViewCell {
     
     private let imageView = UIImageView()
     
-    private lazy var label: UILabel = {
+    private let label: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 10)
         return label

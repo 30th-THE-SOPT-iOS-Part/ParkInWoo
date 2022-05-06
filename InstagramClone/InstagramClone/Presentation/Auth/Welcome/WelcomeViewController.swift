@@ -8,7 +8,7 @@
 import UIKit
 
 final class WelcomeViewController: UIViewController {
-    private lazy var outerStackView: UIStackView = {
+    private let outerStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.alignment = .center
@@ -16,7 +16,7 @@ final class WelcomeViewController: UIViewController {
         return stackView
     }()
     
-    private lazy var titleLabel: UILabel = {
+    private let titleLabel: UILabel = {
         let label = UILabel()
         if let id = User.id {
             label.text = "\(id)\("님".localized()) \("Instagram에 오신 것을 환영합니다".localized())"
@@ -27,7 +27,7 @@ final class WelcomeViewController: UIViewController {
         return label
     }()
     
-    private lazy var guideLabel: UILabel = {
+    private let guideLabel: UILabel = {
         let label = UILabel()
         label.text = "언제든지 연락처 정보와 사용자 이름을 변경할 수 있습니다".localized()
         label.font = .systemFont(ofSize: 12)

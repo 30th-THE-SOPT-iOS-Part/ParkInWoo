@@ -24,14 +24,14 @@ final class SignUpIDViewController: UIViewController {
         return button
     }()
     
-    private lazy var titleLabel: UILabel = {
+    private let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "사용자 이름 만들기".localized()
         label.font = .systemFont(ofSize: 24)
         return label
     }()
     
-    private lazy var guideLabel: UILabel = {
+    private let guideLabel: UILabel = {
         let label = UILabel()
         label.text = "새 계정에 사용할 사용자 이름을 선택하세요. 나중에 언제든지 변경할 수 있습니다".localized()
         label.font = .systemFont(ofSize: 12)
@@ -41,7 +41,7 @@ final class SignUpIDViewController: UIViewController {
         return label
     }()
     
-    private lazy var inputTextField: PadedTextField = {
+    private let inputTextField: PadedTextField = {
         let textField = PadedTextField()
         textField.placeholder = "사용자 이름".localized()
         textField.layer.borderWidth = 1
@@ -52,7 +52,7 @@ final class SignUpIDViewController: UIViewController {
         return textField
     }()
     
-    private lazy var nextButton: UIButton = {
+    private let nextButton: UIButton = {
         let button = UIButton()
         var config = UIButton.Configuration.filled()
         config.title = "다음".localized()
