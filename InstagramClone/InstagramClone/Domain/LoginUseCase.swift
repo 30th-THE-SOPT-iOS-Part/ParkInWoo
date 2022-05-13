@@ -20,14 +20,8 @@ final class LoginUseCase {
     let loginSuccess = PublishRelay<Void>()
     
     func execute() {
-        guard let id = self.id,
-              let user = MockUserInfo.list[id] else {
+        guard let id = self.id else {
             self.loginError.accept(LoginError.idNotMatch)
-            return
-        }
-        
-        if user.pw != self.password {
-            self.loginError.accept(LoginError.pwNotMatch)
             return
         }
         

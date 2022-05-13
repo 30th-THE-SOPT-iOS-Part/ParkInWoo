@@ -30,12 +30,6 @@ final class SignUpUseCase {
             return
         }
         
-        if let _ = MockUserInfo.list[id] {
-            self.signUpError.accept(SignUpError.alreadyExist)
-            return
-        }
-        
-        MockUserInfo.list[id] = User(id: id, pw: pw)
         self.signUpSuccess.accept(())
     }
 }
