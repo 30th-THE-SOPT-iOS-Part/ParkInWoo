@@ -13,15 +13,15 @@ final class LoginViewController: UIViewController {
     private let disposeBag = DisposeBag()
     private let viewModel = LoginViewModel()
     
-    private var defaultScrollView = UIScrollView()
+    private let defaultScrollView = UIScrollView()
     
-    private lazy var logoImageView: UIImageView  = {
+    private let logoImageView: UIImageView  = {
         let imageView = UIImageView()
         imageView.image = Asset.Common.logo
         return imageView
     }()
     
-    private lazy var idTextField: PadedTextField = {
+    private let idTextField: PadedTextField = {
         let textField = PadedTextField()
         textField.placeholder = "전화번호, 사용자 이름 또는 이메일".localized()
         textField.layer.borderWidth = 1
@@ -56,7 +56,7 @@ final class LoginViewController: UIViewController {
         return button
     }()
     
-    private lazy var pwForgotLabel: UILabel = {
+    private let pwForgotLabel: UILabel = {
         let label = UILabel()
         label.textColor = .systemBlue
         label.text = "비밀번호를 잊으셨나요?".localized()
@@ -64,7 +64,7 @@ final class LoginViewController: UIViewController {
         return label
     }()
     
-    private lazy var loginButton: UIButton = {
+    private let loginButton: UIButton = {
         let button = UIButton()
         var config = UIButton.Configuration.filled()
         config.title = "로그인".localized()
@@ -83,7 +83,7 @@ final class LoginViewController: UIViewController {
         return stackView
     }()
     
-    private lazy var noAccountLabel: UILabel = {
+    private let noAccountLabel: UILabel = {
         let label = UILabel()
         label.text = "계정이 없으신가요?".localized()
         label.textColor = .systemGray

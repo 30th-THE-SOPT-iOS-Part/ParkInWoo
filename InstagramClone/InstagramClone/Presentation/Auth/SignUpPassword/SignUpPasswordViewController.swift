@@ -13,7 +13,7 @@ final class SignUpPasswordViewController: UIViewController {
     private let disposeBag = DisposeBag()
     private let viewModel = SignUpPasswordViewModel()
     
-    private var defaultScrollView = UIScrollView()
+    private let defaultScrollView = UIScrollView()
     
     private lazy var backButton: UIButton = {
         let button = UIButton()
@@ -24,14 +24,14 @@ final class SignUpPasswordViewController: UIViewController {
         return button
     }()
     
-    private lazy var titleLabel: UILabel = {
+    private let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "비밀번호 만들기".localized()
         label.font = .systemFont(ofSize: 23)
         return label
     }()
     
-    private lazy var guideLabel: UILabel = {
+    private let guideLabel: UILabel = {
         let label = UILabel()
         label.text = "비밀번호를 저장할 수 있으므로 iColud® 기기에서 로그인 정보를 입력하지 않아도 됩니다".localized()
         label.font = .systemFont(ofSize: 12)
@@ -66,7 +66,7 @@ final class SignUpPasswordViewController: UIViewController {
         return button
     }()
     
-    private lazy var nextButton: UIButton = {
+    private let nextButton: UIButton = {
         let button = UIButton()
         var config = UIButton.Configuration.filled()
         config.title = "다음".localized()
