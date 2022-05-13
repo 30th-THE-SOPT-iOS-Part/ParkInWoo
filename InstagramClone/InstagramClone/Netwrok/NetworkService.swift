@@ -14,7 +14,7 @@ class NetworkService {
     static let shared = NetworkService()
     private init() {}
     
-    func loginRequset(id: String, password: String) throws -> Observable<LoginResponse?> {
+    func loginRequest(id: String, password: String) throws -> Observable<LoginResponse?> {
         let body = ["email": id, "password": password]
         let encoder = JSONEncoder()
         let encodedBody = try encoder.encode(body)
@@ -38,7 +38,7 @@ class NetworkService {
             }
     }
     
-    func signUpRequset(id: String, password: String) throws -> Observable<SignUpResponse?> {
+    func signUpRequest(id: String, password: String) throws -> Observable<SignUpResponse?> {
         let body = ["name": "", "email": id, "password": password]
         let encoder = JSONEncoder()
         let encodedBody = try encoder.encode(body)

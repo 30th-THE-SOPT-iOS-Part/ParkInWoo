@@ -33,7 +33,7 @@ final class SignUpUseCase {
         }
         
         do {
-            let response = try NetworkService.shared.signUpRequset(id: id, password: pw)
+            let response = try NetworkService.shared.signUpRequest(id: id, password: pw)
             
             response
                 .subscribe(onNext: { [weak self] signUpResponse in

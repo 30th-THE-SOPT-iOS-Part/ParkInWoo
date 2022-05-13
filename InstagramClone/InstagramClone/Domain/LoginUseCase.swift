@@ -28,7 +28,7 @@ final class LoginUseCase {
         }
         
         do {
-            let response = try NetworkService.shared.loginRequset(id: id, password: password)
+            let response = try NetworkService.shared.loginRequest(id: id, password: password)
             
             response
                 .subscribe(onNext: { [weak self] loginResponse in
@@ -44,8 +44,9 @@ final class LoginUseCase {
                         return
                     }
                     
-                    self?.loginSuccess.accept(())
-                    
+                    if loginResponse.status == 200 {
+                        self?.loginSuccess.accept(())
+                    }                    
                 })
                 .disposed(by: disposeBag)
         } catch {
