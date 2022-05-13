@@ -14,7 +14,7 @@ class NetworkService {
     static let shared = NetworkService()
     private init() {}
     
-    func loginRequset(id: String, password: String) throws -> Observable<Data> {
+    func loginRequset(id: String, password: String) throws -> Observable<(response: HTTPURLResponse, data: Data)> {
         let body = ["email": id, "password": password]
         let encoder = JSONEncoder()
         let encodedBody = try encoder.encode(body)
@@ -28,10 +28,10 @@ class NetworkService {
                 request.addValue("application/json", forHTTPHeaderField: "Content-Type")
                 return request
             }
-            .flatMap { URLSession.shared.rx.data(request: $0) }
+            .flatMap { URLSession.shared.rx.response(request: $0) }
     }
     
-    func signUpRequset(id: String, password: String) throws -> Observable<Data> {
+    func signUpRequset(id: String, password: String) throws -> Observable<(response: HTTPURLResponse, data: Data)> {
         let body = ["email": id, "password": password]
         let encoder = JSONEncoder()
         let encodedBody = try encoder.encode(body)
@@ -45,6 +45,6 @@ class NetworkService {
                 request.addValue("application/json", forHTTPHeaderField: "Content-Type")
                 return request
             }
-            .flatMap { URLSession.shared.rx.data(request: $0) }
+            .flatMap { URLSession.shared.rx.response(request: $0) }
     }
 }
