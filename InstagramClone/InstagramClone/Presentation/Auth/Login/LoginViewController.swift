@@ -241,7 +241,6 @@ private extension LoginViewController {
         output.errorMessage
             .asDriver(onErrorJustReturn: "")
             .drive(onNext: { [weak self] errorMessage in
-                // TODO: 에러처리
                 let alert = UIAlertController(title: nil, message: errorMessage, preferredStyle: UIAlertController.Style.alert)
                 let defaultAction =  UIAlertAction(title: "확인", style: UIAlertAction.Style.default)
                 alert.addAction(defaultAction)

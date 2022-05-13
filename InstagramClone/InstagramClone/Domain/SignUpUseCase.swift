@@ -13,11 +13,13 @@ enum SignUpError: Error {
     case alreadyExist
     case idEmpty
     case passwordEmpty
+    case networkError
 }
 
 final class SignUpUseCase {
     let signUpError = PublishRelay<SignUpError>()
     let signUpSuccess = PublishRelay<Void>()
+    let disposeBag = DisposeBag()
     
     func execute() {
         guard let id = User.id else {
@@ -30,6 +32,25 @@ final class SignUpUseCase {
             return
         }
         
-        self.signUpSuccess.accept(())
+        do {
+            let response = try NetworkService.shared.signUpRequset(id: id, password: pw)
+            
+            response
+                .subscribe(onNext: { [weak self] signUpResponse in
+                    guard let signUpResponse = signUpResponse else { return }
+                    
+                    if signUpResponse.status == 409 {
+                        self?.signUpError.accept(SignUpError.alreadyExist)
+                        return
+                    }
+                    
+                    if signUpResponse.status == 201 {
+                        self?.signUpSuccess.accept(())
+                    }
+                })
+                .disposed(by: disposeBag)
+        } catch {
+            signUpError.accept(SignUpError.networkError)
+        }
     }
 }

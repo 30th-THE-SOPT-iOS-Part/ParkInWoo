@@ -39,7 +39,7 @@ class NetworkService {
     }
     
     func signUpRequset(id: String, password: String) throws -> Observable<SignUpResponse?> {
-        let body = ["email": id, "password": password]
+        let body = ["name": "", "email": id, "password": password]
         let encoder = JSONEncoder()
         let encodedBody = try encoder.encode(body)
         

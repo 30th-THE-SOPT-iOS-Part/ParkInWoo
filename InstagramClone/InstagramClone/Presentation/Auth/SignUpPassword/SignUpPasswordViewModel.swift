@@ -55,6 +55,8 @@ final class SignUpPasswordViewModel {
         signUpUseCase.signUpError
             .subscribe(onNext: { error in
                 switch error {
+                case .alreadyExist:
+                    output.errorMessage.accept("이미 존재하는 ID입니다.")
                 case .passwordEmpty:
                     output.errorMessage.accept("비밀번호가 입력되지 않았습니다.")
                 default:
