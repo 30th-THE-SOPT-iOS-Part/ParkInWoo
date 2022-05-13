@@ -240,9 +240,12 @@ private extension LoginViewController {
         
         output.errorMessage
             .asDriver(onErrorJustReturn: "")
-            .drive(onNext: { error in
+            .drive(onNext: { [weak self] errorMessage in
                 // TODO: 에러처리
-                print(error)
+                let alert = UIAlertController(title: nil, message: errorMessage, preferredStyle: UIAlertController.Style.alert)
+                let defaultAction =  UIAlertAction(title: "확인", style: UIAlertAction.Style.default)
+                alert.addAction(defaultAction)
+                self?.present(alert, animated: false)
             })
             .disposed(by: disposeBag)
     }

@@ -63,6 +63,8 @@ final class LoginViewModel {
                     output.errorMessage.accept("존재하지 않는 ID입니다.")
                 case .pwNotMatch:
                     output.errorMessage.accept("비밀번호가 일치하지 않습니다.")
+                case .networkError:
+                    output.errorMessage.accept("네트워크 에러입니다.")
                 }
             })
             .disposed(by: disposeBag)
