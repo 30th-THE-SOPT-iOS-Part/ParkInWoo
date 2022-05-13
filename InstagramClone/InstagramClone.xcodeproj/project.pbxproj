@@ -24,6 +24,8 @@
 		8A3BF8C62812A63B00F3D110 /* SignUpPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3BF8C52812A63B00F3D110 /* SignUpPasswordViewModel.swift */; };
 		8A3BF8CC2812B2C200F3D110 /* SignUpIDViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3BF8CB2812B2C200F3D110 /* SignUpIDViewModel.swift */; };
 		8A3BF8CF2812DD3B00F3D110 /* Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3BF8CE2812DD3B00F3D110 /* Asset.swift */; };
+		8A5881FE282EAA1E005747C4 /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5881FD282EAA1E005747C4 /* APIConstants.swift */; };
+		8A588200282EAC70005747C4 /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5881FF282EAC70005747C4 /* NetworkResult.swift */; };
 		8A65EA37281AF83C00900A2A /* StoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A65EA36281AF83C00900A2A /* StoryCollectionViewCell.swift */; };
 		8A65EA39281AF86700900A2A /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A65EA38281AF86600900A2A /* PostTableViewCell.swift */; };
 		8A65EA3B281B354C00900A2A /* ToggleImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A65EA3A281B354C00900A2A /* ToggleImageView.swift */; };
@@ -57,6 +59,8 @@
 		8A3BF8C52812A63B00F3D110 /* SignUpPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPasswordViewModel.swift; sourceTree = "<group>"; };
 		8A3BF8CB2812B2C200F3D110 /* SignUpIDViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpIDViewModel.swift; sourceTree = "<group>"; };
 		8A3BF8CE2812DD3B00F3D110 /* Asset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Asset.swift; sourceTree = "<group>"; };
+		8A5881FD282EAA1E005747C4 /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
+		8A5881FF282EAC70005747C4 /* NetworkResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
 		8A65EA36281AF83C00900A2A /* StoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		8A65EA38281AF86600900A2A /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		8A65EA3A281B354C00900A2A /* ToggleImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleImageView.swift; sourceTree = "<group>"; };
@@ -198,6 +202,15 @@
 			path = Resource;
 			sourceTree = "<group>";
 		};
+		8A5881FC282EAA0B005747C4 /* Netwrok */ = {
+			isa = PBXGroup;
+			children = (
+				8A5881FD282EAA1E005747C4 /* APIConstants.swift */,
+				8A5881FF282EAC70005747C4 /* NetworkResult.swift */,
+			);
+			path = Netwrok;
+			sourceTree = "<group>";
+		};
 		8A8EA860280271EF004DB3EF /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -242,6 +255,7 @@
 		8AC6466927FD547A00377BB2 /* InstagramClone */ = {
 			isa = PBXGroup;
 			children = (
+				8A5881FC282EAA0B005747C4 /* Netwrok */,
 				8A3BF8CD2812DD1500F3D110 /* Resource */,
 				8AC6469027FE9F4400377BB2 /* Domain */,
 				8AC6467E27FD552300377BB2 /* Presentation */,
@@ -404,6 +418,7 @@
 				8A65EA3B281B354C00900A2A /* ToggleImageView.swift in Sources */,
 				8A3BF8CF2812DD3B00F3D110 /* Asset.swift in Sources */,
 				8A3BF8A728117D7D00F3D110 /* ReelsViewController.swift in Sources */,
+				8A5881FE282EAA1E005747C4 /* APIConstants.swift in Sources */,
 				8A3BF8AB28117D8D00F3D110 /* ProfileViewController.swift in Sources */,
 				8A65EA3D281B364E00900A2A /* StoryTableViewCell.swift in Sources */,
 				8A3BF8C328128B0A00F3D110 /* LoginViewModel.swift in Sources */,
@@ -416,6 +431,7 @@
 				8A3BF8A528117D7500F3D110 /* SearchViewController.swift in Sources */,
 				8A3BF8C62812A63B00F3D110 /* SignUpPasswordViewModel.swift in Sources */,
 				8A3BF89728115FA000F3D110 /* TabBarController.swift in Sources */,
+				8A588200282EAC70005747C4 /* NetworkResult.swift in Sources */,
 				8A3BF88D280FFA1500F3D110 /* String+Localizing.swift in Sources */,
 				8A3BF8CC2812B2C200F3D110 /* SignUpIDViewModel.swift in Sources */,
 				8AC6466D27FD547A00377BB2 /* SceneDelegate.swift in Sources */,
