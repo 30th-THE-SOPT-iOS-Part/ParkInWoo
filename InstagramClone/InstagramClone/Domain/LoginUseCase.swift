@@ -11,6 +11,7 @@ import RxRelay
 enum LoginError: Error {
     case idNotMatch
     case pwNotMatch
+    case networkError
 }
 
 final class LoginUseCase {
@@ -18,21 +19,38 @@ final class LoginUseCase {
     var password: String?
     let loginError = PublishRelay<LoginError>()
     let loginSuccess = PublishRelay<Void>()
+    let disposeBag = DisposeBag()
     
     func execute() {
         guard let id = self.id,
-              let user = MockUserInfo.list[id] else {
-            self.loginError.accept(LoginError.idNotMatch)
+              let password = self.password else {
             return
         }
         
-        if user.pw != self.password {
-            self.loginError.accept(LoginError.pwNotMatch)
-            return
+        do {
+            let response = try NetworkService.shared.loginRequest(id: id, password: password)
+            
+            response
+                .subscribe(onNext: { [weak self] loginResponse in
+                    guard let loginResponse = loginResponse else { return }
+                    
+                    if loginResponse.status == 404 {
+                        self?.loginError.accept(LoginError.idNotMatch)
+                        return
+                    }
+                    
+                    if loginResponse.status == 409 {
+                        self?.loginError.accept(LoginError.pwNotMatch)
+                        return
+                    }
+                    
+                    if loginResponse.status == 200 {
+                        self?.loginSuccess.accept(())
+                    }                    
+                })
+                .disposed(by: disposeBag)
+        } catch {
+            loginError.accept(LoginError.networkError)
         }
-        
-        User.id = self.id
-        User.password = self.password
-        loginSuccess.accept(())
     }
 }

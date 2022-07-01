@@ -19,11 +19,14 @@
 		8A3BF8AB28117D8D00F3D110 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3BF8AA28117D8D00F3D110 /* ProfileViewController.swift */; };
 		8A3BF8B228126AD000F3D110 /* LoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3BF8B128126AD000F3D110 /* LoginUseCase.swift */; };
 		8A3BF8B428126ADF00F3D110 /* SignUpUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3BF8B328126ADF00F3D110 /* SignUpUseCase.swift */; };
-		8A3BF8BF28127E9E00F3D110 /* MockUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3BF8BE28127E9E00F3D110 /* MockUserInfo.swift */; };
 		8A3BF8C328128B0A00F3D110 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3BF8C228128B0A00F3D110 /* LoginViewModel.swift */; };
 		8A3BF8C62812A63B00F3D110 /* SignUpPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3BF8C52812A63B00F3D110 /* SignUpPasswordViewModel.swift */; };
 		8A3BF8CC2812B2C200F3D110 /* SignUpIDViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3BF8CB2812B2C200F3D110 /* SignUpIDViewModel.swift */; };
 		8A3BF8CF2812DD3B00F3D110 /* Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3BF8CE2812DD3B00F3D110 /* Asset.swift */; };
+		8A5881FE282EAA1E005747C4 /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5881FD282EAA1E005747C4 /* APIConstants.swift */; };
+		8A588203282EADE4005747C4 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A588202282EADE4005747C4 /* LoginResponse.swift */; };
+		8A588207282EAE51005747C4 /* SignUpResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A588206282EAE51005747C4 /* SignUpResponse.swift */; };
+		8A588209282EAEC5005747C4 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A588208282EAEC5005747C4 /* NetworkService.swift */; };
 		8A65EA37281AF83C00900A2A /* StoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A65EA36281AF83C00900A2A /* StoryCollectionViewCell.swift */; };
 		8A65EA39281AF86700900A2A /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A65EA38281AF86600900A2A /* PostTableViewCell.swift */; };
 		8A65EA3B281B354C00900A2A /* ToggleImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A65EA3A281B354C00900A2A /* ToggleImageView.swift */; };
@@ -52,11 +55,14 @@
 		8A3BF8AA28117D8D00F3D110 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		8A3BF8B128126AD000F3D110 /* LoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUseCase.swift; sourceTree = "<group>"; };
 		8A3BF8B328126ADF00F3D110 /* SignUpUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpUseCase.swift; sourceTree = "<group>"; };
-		8A3BF8BE28127E9E00F3D110 /* MockUserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUserInfo.swift; sourceTree = "<group>"; };
 		8A3BF8C228128B0A00F3D110 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		8A3BF8C52812A63B00F3D110 /* SignUpPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPasswordViewModel.swift; sourceTree = "<group>"; };
 		8A3BF8CB2812B2C200F3D110 /* SignUpIDViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpIDViewModel.swift; sourceTree = "<group>"; };
 		8A3BF8CE2812DD3B00F3D110 /* Asset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Asset.swift; sourceTree = "<group>"; };
+		8A5881FD282EAA1E005747C4 /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
+		8A588202282EADE4005747C4 /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
+		8A588206282EAE51005747C4 /* SignUpResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpResponse.swift; sourceTree = "<group>"; };
+		8A588208282EAEC5005747C4 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		8A65EA36281AF83C00900A2A /* StoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		8A65EA38281AF86600900A2A /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		8A65EA3A281B354C00900A2A /* ToggleImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleImageView.swift; sourceTree = "<group>"; };
@@ -173,14 +179,6 @@
 			name = UseCase;
 			sourceTree = "<group>";
 		};
-		8A3BF8BD28127E7C00F3D110 /* Mock */ = {
-			isa = PBXGroup;
-			children = (
-				8A3BF8BE28127E9E00F3D110 /* MockUserInfo.swift */,
-			);
-			name = Mock;
-			sourceTree = "<group>";
-		};
 		8A3BF8C42812A57200F3D110 /* SignUpID */ = {
 			isa = PBXGroup;
 			children = (
@@ -196,6 +194,25 @@
 				8A3BF8CE2812DD3B00F3D110 /* Asset.swift */,
 			);
 			path = Resource;
+			sourceTree = "<group>";
+		};
+		8A5881FC282EAA0B005747C4 /* Netwrok */ = {
+			isa = PBXGroup;
+			children = (
+				8A588201282EAD5B005747C4 /* Data Model */,
+				8A5881FD282EAA1E005747C4 /* APIConstants.swift */,
+				8A588208282EAEC5005747C4 /* NetworkService.swift */,
+			);
+			path = Netwrok;
+			sourceTree = "<group>";
+		};
+		8A588201282EAD5B005747C4 /* Data Model */ = {
+			isa = PBXGroup;
+			children = (
+				8A588202282EADE4005747C4 /* LoginResponse.swift */,
+				8A588206282EAE51005747C4 /* SignUpResponse.swift */,
+			);
+			path = "Data Model";
 			sourceTree = "<group>";
 		};
 		8A8EA860280271EF004DB3EF /* Extension */ = {
@@ -242,6 +259,7 @@
 		8AC6466927FD547A00377BB2 /* InstagramClone */ = {
 			isa = PBXGroup;
 			children = (
+				8A5881FC282EAA0B005747C4 /* Netwrok */,
 				8A3BF8CD2812DD1500F3D110 /* Resource */,
 				8AC6469027FE9F4400377BB2 /* Domain */,
 				8AC6467E27FD552300377BB2 /* Presentation */,
@@ -308,7 +326,6 @@
 		8AC6469027FE9F4400377BB2 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				8A3BF8BD28127E7C00F3D110 /* Mock */,
 				8A3BF8AE281269C600F3D110 /* UseCase */,
 				8A3BF8AD281269BF00F3D110 /* Model */,
 			);
@@ -404,11 +421,15 @@
 				8A65EA3B281B354C00900A2A /* ToggleImageView.swift in Sources */,
 				8A3BF8CF2812DD3B00F3D110 /* Asset.swift in Sources */,
 				8A3BF8A728117D7D00F3D110 /* ReelsViewController.swift in Sources */,
+				8A5881FE282EAA1E005747C4 /* APIConstants.swift in Sources */,
 				8A3BF8AB28117D8D00F3D110 /* ProfileViewController.swift in Sources */,
+				8A588209282EAEC5005747C4 /* NetworkService.swift in Sources */,
 				8A65EA3D281B364E00900A2A /* StoryTableViewCell.swift in Sources */,
 				8A3BF8C328128B0A00F3D110 /* LoginViewModel.swift in Sources */,
 				8A65EA37281AF83C00900A2A /* StoryCollectionViewCell.swift in Sources */,
+				8A588207282EAE51005747C4 /* SignUpResponse.swift in Sources */,
 				8AC6466B27FD547A00377BB2 /* AppDelegate.swift in Sources */,
+				8A588203282EADE4005747C4 /* LoginResponse.swift in Sources */,
 				8A65EA39281AF86700900A2A /* PostTableViewCell.swift in Sources */,
 				8AC6469327FE9F5C00377BB2 /* User.swift in Sources */,
 				8AC6468827FD57EE00377BB2 /* SignUpIDViewController.swift in Sources */,
@@ -421,7 +442,6 @@
 				8AC6466D27FD547A00377BB2 /* SceneDelegate.swift in Sources */,
 				8A3BF8A328117D3B00F3D110 /* HomeViewController.swift in Sources */,
 				8A9880622820160C00FFB84A /* Post.swift in Sources */,
-				8A3BF8BF28127E9E00F3D110 /* MockUserInfo.swift in Sources */,
 				8A3BF8B428126ADF00F3D110 /* SignUpUseCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
